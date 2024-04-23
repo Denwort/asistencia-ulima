@@ -24,27 +24,27 @@ Instalación: Ingresar a la pagina oficial de [Inkscape](https://inkscape.org/re
 - Android Studio: Android Studio es el entorno de desarrollo integrado (IDE) oficial que se usa en el desarrollo de apps para Android. Basado en el potente editor de código y las herramientas para desarrolladores de [IntelliJ IDEA](https://www.jetbrains.com/idea/), Android Studio ofrece aún más funciones que mejoran tu productividad cuando compilas apps para Android.
 
     1. Ingresar a [Android Studio](https://developer.android.com/studio?hl=es-419) y descargar Android Studio Iguana.
-    ![alt text](androidStudio.png)
+    ![alt text](/src/screenshots/androidStudio.png)
 
     2. Seguir los pasos: Next -> Next -> Install -> Next -> Finish
 
     3. Al ingresar al programa, seguimos los siguientes pasos finales para acabar con la instalación: Next -> Next -> Next
-    ![alt text](download1_android.png)
+    ![alt text](/src/screenshots/download1_android.png)
     
     4. Debemos de aceptar todas las licencias y darle a Finish.
-    ![alt text](download2_android.png)
+    ![alt text](/src/screenshots/download2_android.png)
 
     5. Una vez ingresado al programa dirigirse a customize -> all settings -> Languages & Frameworks -> Android SDK -> SDK Tools y activar la pestaña de Android SDK Command-line Tools (lastest). Seguidamente darle a "Apply" y "OK".
-    ![alt text](download3_android.png)
+    ![alt text](/src/screenshots/download3_android.png)
     
 
 - Flutter: Flutter utiliza el lenguaje de programación Dart y se compila en código máquina. Los dispositivos host entienden este código, lo que garantiza un rendimiento rápido y eficaz. Rendimiento rápido, consistente y personalizable.
 
 1. Abrir la página oficial de [Flutter](https://docs.flutter.dev/get-started/install/windows/mobile?tab=download) y descargar la última versión.
-![alt text](flutter-download.png)
+![alt text](/src/screenshots/flutter-download.png)
 
 2. Descomprimir el archivo .zip, entrar a la carpeta bin y copiar la ruta. Entrar dentro de nuestro variable de entorno de la cuenta, finalmente pegar la ruta.
-![alt text](ve_flutter.png)
+![alt text](/src/screenshots/ve_flutter.png)
 
 3. Abrir el cmd e ingresar: flutter doctor --android-licenses
 
@@ -56,12 +56,13 @@ Instalación: Ingresar a la pagina oficial de [Inkscape](https://inkscape.org/re
 
 ## Diagrama de despliegue
 
-![Diagrama de despliegue](despliegue.png)
+![Diagrama de despliegue](/src/screenshots/despliegue.png)
+
 (Diagrama elaborado relacionado correctamente a los
 requisitos no funcionales.)
 
 ## Requerimientos no funcionales
-
+- 
 (Los requerimientos están relacionados con el diagrama de
 despliegue)
 
