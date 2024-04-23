@@ -57,6 +57,8 @@ Instalación: Ingresar a la pagina oficial de [Inkscape](https://inkscape.org/re
 ## Diagrama de despliegue
 
 ![Diagrama de despliegue](despliegue.png)
+(Diagrama elaborado relacionado correctamente a los
+requisitos no funcionales.)
 
 ## Requerimientos no funcionales
 
