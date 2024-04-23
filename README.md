@@ -62,6 +62,10 @@ Instalación: Ingresar a la pagina oficial de [Inkscape](https://inkscape.org/re
 requisitos no funcionales.)
 
 ## Requerimientos no funcionales
+
+(Los requerimientos están relacionados con el diagrama de
+despliegue)
+
 - Que la app movil esté desarrollada con Flutter
 - Que el backend esté desarrollado en Nodejs
 - Que la base de datos utilice SQLite
@@ -72,10 +76,8 @@ requisitos no funcionales.)
 - Que la app sea ligera. <50MB
 - Que la app este disponible 99% de la semana.
 - Que el mantenimiento se realicen los dias domingos.
-- Que los datos se manejen de forma segura
+- Que los datos se manejen de forma segura.
 
-(Los requerimientos están relacionados con el diagrama de
-despliegue)
 
 ## Requerimientos funcionales
 (Diagrama de casos de uso)
