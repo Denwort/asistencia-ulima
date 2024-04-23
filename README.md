@@ -4,7 +4,7 @@
 - [Diagrama de despliegue](#diagrama-de-despliegue)
 - [Requerimientos no funcionales](#requerimientos-no-funcionales)
 - [Requerimientos funcionales](#requerimientos-funcionales)
-- [Mockups](#mockups)
+- [Mockup](#mockups)
 
 ## Breve explicación del entorno de desarrollo
 - Draw.io: Es una herramienta de diagramación, de diagrama de flujo, de proceso, entre otras muchas funciones. Es una herramienta gratuita con la que se puede dibujar cualquier tipo de mapas mentales, mapas conceptuales, esquemas o diferentes representaciones gráficas, como diagrama de jerarquía o conjuntos. Instalacion: No hay proceso de instaacion por tseruna plataforma web
@@ -92,13 +92,13 @@ requisitos funcionales)
 (Las descripciones están relacionadas correctamente a los
 requisitos funcionales y los mockups.)
 
-- req: explicacion
+- req: 
 
+![Diagrama de casos de uso](casos-de-uso.png)
 
-
-## Mockups
+## Mockup
 
 (Las descripciones están relacionadas correctamente a los
 requisitos funcionales y los mockups.)
 
-![alt text](</src/screenshots/mock up 1.png>)
+![alt text](/src/screenshots/mock up 1.png)
