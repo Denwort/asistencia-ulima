@@ -92,7 +92,7 @@ requisitos funcionales)
 (Las descripciones están relacionadas correctamente a los
 requisitos funcionales y los mockups.)
 
-- req: 
+- 
 
 ![Diagrama de casos de uso](casos-de-uso.png)
 
@@ -101,4 +101,4 @@ requisitos funcionales y los mockups.)
 (Las descripciones están relacionadas correctamente a los
 requisitos funcionales y los mockups.)
 
-![alt text](/src/screenshots/mock up 1.png)
+![Mockup](/src/screenshots/mockup.png)
