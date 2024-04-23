@@ -24,27 +24,27 @@ Instalación: Ingresar a la pagina oficial de [Inkscape](https://inkscape.org/re
 - Android Studio: Android Studio es el entorno de desarrollo integrado (IDE) oficial que se usa en el desarrollo de apps para Android. Basado en el potente editor de código y las herramientas para desarrolladores de [IntelliJ IDEA](https://www.jetbrains.com/idea/), Android Studio ofrece aún más funciones que mejoran tu productividad cuando compilas apps para Android.
 
     1. Ingresar a [Android Studio](https://developer.android.com/studio?hl=es-419) y descargar Android Studio Iguana.
-    ![alt text](/src/screenshots/androidStudio.png)
+    ![alt text](src/screenshots/androidStudio.png)
 
     2. Seguir los pasos: Next -> Next -> Install -> Next -> Finish
 
     3. Al ingresar al programa, seguimos los siguientes pasos finales para acabar con la instalación: Next -> Next -> Next
-    ![alt text](/src/screenshots/download1_android.png)
+    ![alt text](src/screenshots/download1_android.png)
     
     4. Debemos de aceptar todas las licencias y darle a Finish.
-    ![alt text](/src/screenshots/download2_android.png)
+    ![alt text](src/screenshots/download2_android.png)
 
     5. Una vez ingresado al programa dirigirse a customize -> all settings -> Languages & Frameworks -> Android SDK -> SDK Tools y activar la pestaña de Android SDK Command-line Tools (lastest). Seguidamente darle a "Apply" y "OK".
-    ![alt text](/src/screenshots/download3_android.png)
+    ![alt text](src/screenshots/download3_android.png)
     
 
 - Flutter: Flutter utiliza el lenguaje de programación Dart y se compila en código máquina. Los dispositivos host entienden este código, lo que garantiza un rendimiento rápido y eficaz. Rendimiento rápido, consistente y personalizable.
 
 1. Abrir la página oficial de [Flutter](https://docs.flutter.dev/get-started/install/windows/mobile?tab=download) y descargar la última versión.
-![alt text](/src/screenshots/flutter-download.png)
+![alt text](src/screenshots/flutter-download.png)
 
 2. Descomprimir el archivo .zip, entrar a la carpeta bin y copiar la ruta. Entrar dentro de nuestro variable de entorno de la cuenta, finalmente pegar la ruta.
-![alt text](/src/screenshots/ve_flutter.png)
+![alt text](src/screenshots/ve_flutter.png)
 
 3. Abrir el cmd e ingresar: flutter doctor --android-licenses
 
@@ -56,7 +56,7 @@ Instalación: Ingresar a la pagina oficial de [Inkscape](https://inkscape.org/re
 
 ## Diagrama entidad-relacion
 
-![Diagrama entidad-relacion](/src/screenshots/entidad-relacion.png)
+![Diagrama entidad-relacion](src/screenshots/entidad-relacion.png)
 
 ## Diagrama de despliegue
 
@@ -65,7 +65,7 @@ requisitos no funcionales.)
 
 El presente diagrama tiene como finalidad poder ver la arquitectura física de nuestra aplicación. Donde lo haremos en un entorno Android, conectado a un backend en NodeJS, asi mismo, tendremos una base de datos llamada ULima conectado al mismo servidor ULima. Finalmente en una PC administrativa se tendrá un navegador Web.
 
-![Diagrama de despliegue](/src/screenshots/despliegue.png)
+![Diagrama de despliegue](src/screenshots/despliegue.png)
 
 ## Requerimientos no funcionales
 
@@ -84,7 +84,6 @@ despliegue)
 - Que el mantenimiento se realicen los dias domingos.
 - Que los datos se manejen de forma segura.
 
-
 ## Requerimientos funcionales
 (Diagrama de casos de uso)
 (Diagrama elaborado relacionado correctamente a los
@@ -92,13 +91,19 @@ requisitos funcionales)
 (Las descripciones están relacionadas correctamente a los
 requisitos funcionales y los mockups.)
 
-- 
+- El alumno puede registrar su asistencia
+- El alumno puede ver todas sus asistencias a lo largo del tiempo
+- Ambos usuarios pueden iniciar sesion y cerrar sesion
+- Ambos usuarios pueden ver las secciones a las que estan asignadas y las sesiones que tiene dicha clase.
+- Ambos usuarios pueden ver su perfil
+- El profesor puede generar el QR para la asistencia
+- El profesor puede ver todas las asistencias de todos sus alumnos
+- El profesor puede modificar la asistencia de algun alumno
 
-![Diagrama de casos de uso](casos-de-uso.png)
-
+![Diagrama de casos de uso](src/screenshots/diagrama_casos_de_uso.png)
 ## Mockup
 
 (Las descripciones están relacionadas correctamente a los
 requisitos funcionales y los mockups.)
 
-![Mockup](/src/screenshots/mockup.png)
+![Mockup](src/screenshots/mockup.png)
