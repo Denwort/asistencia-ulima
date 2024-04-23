@@ -54,12 +54,18 @@ Instalación: Ingresar a la pagina oficial de [Inkscape](https://inkscape.org/re
 
 - Replit: Es una herramienta que permite a los usuarios escribir código y crear aplicaciones y sitios web mediante un navegador. El sitio también tiene varias funciones de colaboración, incluida la capacidad de edición multiusuario en tiempo real con una fuente de chat en vivo. Instalacion: No hay proceso de instalacion por ser una plataforma web
 
-## Diagrama de despliegue
+## Diagrama entidad-relacion
 
-![Diagrama de despliegue](/src/screenshots/despliegue.png)
+![Diagrama entidad-relacion](/src/screenshots/entidad-relacion.png)
+
+## Diagrama de despliegue
 
 (Diagrama elaborado relacionado correctamente a los
 requisitos no funcionales.)
+
+El presente diagrama tiene como finalidad poder ver la arquitectura física de nuestra aplicación. Donde lo haremos en un entorno Android, conectado a un backend en NodeJS, asi mismo, tendremos una base de datos llamada ULima conectado al mismo servidor ULima. Finalmente en una PC administrativa se tendrá un navegador Web.
+
+![Diagrama de despliegue](/src/screenshots/despliegue.png)
 
 ## Requerimientos no funcionales
 
@@ -86,6 +92,13 @@ requisitos funcionales)
 (Las descripciones están relacionadas correctamente a los
 requisitos funcionales y los mockups.)
 
+- req: explicacion
+
+
+
 ## Mockups
-Las descripciones están relacionadas correctamente a los
-requisitos funcionales y los mockups.
+
+(Las descripciones están relacionadas correctamente a los
+requisitos funcionales y los mockups.)
+
+![alt text](</src/screenshots/mock up 1.png>)
