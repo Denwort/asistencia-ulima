@@ -1,6 +1,7 @@
 # Asistencia ULima
 
 - [Entorno de desarrollo](#breve-explicación-del-entorno-de-desarrollo)
+- [Modelo relacional](#modelo-relacional)
 - [Diagrama de despliegue](#diagrama-de-despliegue)
 - [Requerimientos no funcionales](#requerimientos-no-funcionales)
 - [Requerimientos funcionales](#requerimientos-funcionales)
