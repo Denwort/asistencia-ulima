@@ -54,23 +54,17 @@ Instalación: Ingresar a la pagina oficial de [Inkscape](https://inkscape.org/re
 
 - Replit: Es una herramienta que permite a los usuarios escribir código y crear aplicaciones y sitios web mediante un navegador. El sitio también tiene varias funciones de colaboración, incluida la capacidad de edición multiusuario en tiempo real con una fuente de chat en vivo. Instalacion: No hay proceso de instalacion por ser una plataforma web
 
-## Diagrama entidad-relacion
+## Modelo relacional
 
-![Diagrama entidad-relacion](src/screenshots/entidad-relacion.png)
+![Modelo relacional](src/screenshots/modelo_relacional.png)
 
 ## Diagrama de despliegue
-
-(Diagrama elaborado relacionado correctamente a los
-requisitos no funcionales.)
 
 El presente diagrama tiene como finalidad poder ver la arquitectura física de nuestra aplicación. Donde lo haremos en un entorno Android, conectado a un backend en NodeJS, asi mismo, tendremos una base de datos llamada ULima conectado al mismo servidor ULima. Finalmente en una PC administrativa se tendrá un navegador Web.
 
 ![Diagrama de despliegue](src/screenshots/despliegue.png)
 
 ## Requerimientos no funcionales
-
-(Los requerimientos están relacionados con el diagrama de
-despliegue)
 
 - Que la app movil esté desarrollada con Flutter
 - Que el backend esté desarrollado en Nodejs
@@ -85,25 +79,19 @@ despliegue)
 - Que los datos se manejen de forma segura.
 
 ## Requerimientos funcionales
-(Diagrama de casos de uso)
-(Diagrama elaborado relacionado correctamente a los
-requisitos funcionales)
-(Las descripciones están relacionadas correctamente a los
-requisitos funcionales y los mockups.)
 
 - El alumno puede registrar su asistencia
 - El alumno puede ver todas sus asistencias a lo largo del tiempo
-- Ambos usuarios pueden iniciar sesion y cerrar sesion
+- Ambos usuarios pueden iniciar sesion, cerrar sesion y solicitar un cambio de contraseña.
 - Ambos usuarios pueden ver las secciones a las que estan asignadas y las sesiones que tiene dicha clase.
 - Ambos usuarios pueden ver su perfil
+- Ambos usuarios pueden ver informacion sobre la aplicacion en el apartado de "Acerca de".
 - El profesor puede generar el QR para la asistencia
 - El profesor puede ver todas las asistencias de todos sus alumnos
 - El profesor puede modificar la asistencia de algun alumno
 
-![Diagrama de casos de uso](src/screenshots/diagrama_casos_de_uso.png)
+![Diagrama de casos de uso](src/screenshots/casos_de_uso.png)
+
 ## Mockup
 
-(Las descripciones están relacionadas correctamente a los
-requisitos funcionales y los mockups.)
-
-![Mockup](src/screenshots/mockup.png)
+![Mockup](src/screenshots/mockupterminado.png)
