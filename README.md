@@ -95,4 +95,4 @@ El presente diagrama tiene como finalidad poder ver la arquitectura física de n
 
 ## Mockup
 
-![Mockup](src/screenshots/mockupterminado.png)
+![Mockup](src/screenshots/mockup.svg)
