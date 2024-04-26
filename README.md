@@ -67,17 +67,17 @@ El presente diagrama tiene como finalidad poder ver la arquitectura física de n
 
 ## Requerimientos no funcionales
 
-- Que la app movil esté desarrollada con Flutter
-- Que el backend esté desarrollado en Nodejs
-- Que la base de datos utilice SQLite
-- Que use los colores ulima
-- Que el idioma sea español
-- Que la interfaz sea intuitiva y facil de usar
-- Que tenga un tiempo de respuesta rápido en el escaneo de QRs
-- Que la app sea ligera. <50MB
-- Que la app este disponible 99% de la semana.
-- Que el mantenimiento se realicen los dias domingos.
-- Que los datos se manejen de forma segura.
+- La app movil esté desarrollada con Flutter
+- El backend esté desarrollado en Nodejs
+- La base de datos utilice SQLite
+- Usar los colores ulima
+- El idioma sea español
+- La interfaz sea intuitiva y facil de usar
+- Tenga un tiempo de respuesta rápido en el escaneo de QRs
+- La app es ligera. <50MB
+- La app esta disponible 99% de la semana.
+- El mantenimiento se realiza los dias domingos.
+- Los datos se manejen de forma segura.
 
 ## Requerimientos funcionales
 
