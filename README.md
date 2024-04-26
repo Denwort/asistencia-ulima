@@ -1,11 +1,15 @@
 # Asistencia ULima
 
+- [Descripción del proyecto](#descripcion-del-proyecto)
 - [Entorno de desarrollo](#breve-explicación-del-entorno-de-desarrollo)
 - [Modelo relacional](#modelo-relacional)
 - [Diagrama de despliegue](#diagrama-de-despliegue)
 - [Requerimientos no funcionales](#requerimientos-no-funcionales)
 - [Requerimientos funcionales](#requerimientos-funcionales)
 - [Mockup](#mockups)
+
+## Descripción del proyecto
+- Este proyecto está enfocado a resolver el problema de generar manualmente la asistencia en un salón de clases. Junto con la mano de la tecnología estamos desarrollando agilizar dicho procedimiento.
 
 ## Breve explicación del entorno de desarrollo
 - Draw.io: Es una herramienta de diagramación, de diagrama de flujo, de proceso, entre otras muchas funciones. Es una herramienta gratuita con la que se puede dibujar cualquier tipo de mapas mentales, mapas conceptuales, esquemas o diferentes representaciones gráficas, como diagrama de jerarquía o conjuntos. Instalacion: No hay proceso de instaacion por tseruna plataforma web
