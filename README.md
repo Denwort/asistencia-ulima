@@ -1,6 +1,6 @@
 # Asistencia ULima
 
-- [Descripción del proyecto](#descripcion-del-proyecto)
+- [Descripcion del proyecto](#descripcion-del-proyecto)
 - [Entorno de desarrollo](#breve-explicación-del-entorno-de-desarrollo)
 - [Modelo relacional](#modelo-relacional)
 - [Diagrama de despliegue](#diagrama-de-despliegue)
@@ -8,7 +8,7 @@
 - [Requerimientos funcionales](#requerimientos-funcionales)
 - [Mockup](#mockups)
 
-## Descripción del proyecto
+## Descripcion del proyecto
 - Este proyecto está enfocado a resolver el problema de generar manualmente la asistencia en un salón de clases. Junto con la mano de la tecnología estamos desarrollando agilizar dicho procedimiento.
 
 ## Breve explicación del entorno de desarrollo
