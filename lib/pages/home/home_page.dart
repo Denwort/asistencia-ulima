@@ -72,8 +72,9 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
           title: Text(
-            'ULima Gym',
-            style: TextStyle(color: Colors.white),
+            'Asistencia ULima',
+            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),
+            
           ),
           automaticallyImplyLeading: false,
           backgroundColor: Color(0XFFF26F29),
