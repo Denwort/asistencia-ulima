@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'package:ulimagym/pages/exercise/exercise_page.dart';
 import 'package:ulimagym/pages/profile/profile_page.dart';
-import 'package:ulimagym/pages/routine/routine_page.dart';
+import 'package:ulimagym/pages/seccion/seccion_page.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   _HomePageState({required this.user});
 
   static List<Widget> _widgetOptions = <Widget>[
-    RoutinePage(),
+    SeccionPage(),
     ExercisePage(),
     ProfilePage(),
   ];
@@ -73,8 +73,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
           title: Text(
             'Asistencia ULima',
-            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),
-            
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           automaticallyImplyLeading: false,
           backgroundColor: Color(0XFFF26F29),

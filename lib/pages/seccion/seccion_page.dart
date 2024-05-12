@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'routine_controller.dart';
+import 'seccion_controller.dart';
 import '../../models/entities/BodyPart.dart';
 
-class RoutinePage extends StatelessWidget {
-  RoutineController control = Get.put(RoutineController());
+class SeccionPage extends StatelessWidget {
+  SeccionController control = Get.put(SeccionController());
 
   Widget _buildBody(BuildContext context, int cantidadDeObjetos) {
     return SafeArea(
