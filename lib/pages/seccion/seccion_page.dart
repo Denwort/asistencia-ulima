@@ -48,28 +48,50 @@ class SeccionPage extends StatelessWidget {
               width: 330,
               height: 90,
               decoration: BoxDecoration(
-                color: Color.fromARGB(
-                  244,
-                  161,
-                  231,
-                  222,
-                ), // Puedes cambiar el color aquí si deseas
-                borderRadius: BorderRadius.circular(
-                  35,
-                ), // Radio de las esquinas
+                color: Color.fromARGB(244, 161, 231, 222),
+                borderRadius: BorderRadius.circular(35),
               ),
-              margin: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 10,
-              ), // Espacio entre cuadrados
+              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 22),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Programación Móvil',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'Profesor: Jose Jesus Valdivia Caballero',
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'Sección: 823',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             if (i < cantidad - 1)
               Divider(
                 height: 20,
                 thickness: 1,
                 color: Colors.grey,
-                indent: 50, // Espaciado izquierdo
-                endIndent: 50, // Espaciado derecho
+                indent: 50,
+                endIndent: 50,
               ),
           ],
         ),
