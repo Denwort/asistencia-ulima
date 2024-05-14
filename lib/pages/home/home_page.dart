@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
-import 'package:ulimagym/pages/exercise/exercise_page.dart';
 import 'package:ulimagym/pages/profile/profile_page.dart';
-import 'package:ulimagym/pages/seccion/seccion_page.dart';
+import 'package:ulimagym/pages/estudiantecursos/seccion_page.dart';
+import 'package:ulimagym/pages/acercade/acercade_page.dart';
+import 'package:ulimagym/pages/profesorqr/profesorqr_page.dart';
+import 'package:ulimagym/pages/estudianteqr/estudianteqr_page.dart';
+
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,9 +26,17 @@ class _HomePageState extends State<HomePage> {
 
   _HomePageState({required this.user});
 
-  static List<Widget> _widgetOptions = <Widget>[
-    SeccionPage(),
-    ExercisePage(),
+  // Paginas para el estudiante
+  static List<Widget> _widgetOptionsEstudiante = <Widget>[
+    EstudianteCursosPage(),
+    EstudianteQRPage(),
+    ProfilePage(),
+  ];
+
+  // Paginas para el profesor
+  static List<Widget> _widgetOptionsProfesor = <Widget>[
+    EstudianteCursosPage(),
+    ProfesorQRPage(),
     ProfilePage(),
   ];
 
@@ -35,25 +46,72 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Widget _navigationBottom() {
+  Widget _navigationBottomEstudiante() {
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.list_outlined),
-          label: 'Mi Rutina',
+          label: 'Estudiante-Cursos',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.addchart_outlined),
-          label: 'Ejercicios',
+          label: 'Estudiante-QR',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Mi Cuenta',
+          label: 'Estudiante-Perfil',
         ),
       ],
       currentIndex: _selectedIndex,
       selectedItemColor: Color(0XFFF26F29),
       onTap: _onItemTapped,
+    );
+  }
+
+  Widget _navigationBottomProfesor() {
+    return BottomNavigationBar(
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.list_outlined),
+          label: 'Profesor-Cursos',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.addchart_outlined),
+          label: 'Profesor-QR',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profesor-Perfil',
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      selectedItemColor: Color(0XFFF26F29),
+      onTap: _onItemTapped,
+    );
+  }
+
+  Widget _appbarActions() {
+    return PopupMenuButton<int>(
+      onSelected: (value) {
+        if (value == 1) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AcercadePage()),
+          );
+        } else if (value == 2) {
+          Navigator.pop(context);
+        }
+      },
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
+        PopupMenuItem<int>(
+          value: 1,
+          child: Text('Acerca de'),
+        ),
+        PopupMenuItem<int>(
+          value: 2,
+          child: Text('Cerrar sesion'),
+        ),
+      ],
     );
   }
 
@@ -81,10 +139,12 @@ class _HomePageState extends State<HomePage> {
           automaticallyImplyLeading: false,
           backgroundColor: Color(0XFFF26F29),
           actions: [
-            // Agregar un menú desplegable al AppBar
-          ]),
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: _navigationBottom(),
+
+            _appbarActions(),
+          ]
+          ),
+      body: user.id==1 ? _widgetOptionsEstudiante.elementAt(_selectedIndex) : _widgetOptionsProfesor.elementAt(_selectedIndex),
+      bottomNavigationBar: user.id==1 ? _navigationBottomEstudiante(): _navigationBottomProfesor(),
     ));
   }
 }

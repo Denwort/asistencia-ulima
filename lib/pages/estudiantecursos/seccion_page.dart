@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'seccion_controller.dart';
 import '../../models/entities/BodyPart.dart';
 
-class SeccionPage extends StatelessWidget {
-  SeccionController control = Get.put(SeccionController());
+class EstudianteCursosPage extends StatelessWidget {
+  EstudianteCursosController control = Get.put(EstudianteCursosController());
 
   Widget _buildBody(BuildContext context, int cantidadDeObjetos) {
     return SafeArea(

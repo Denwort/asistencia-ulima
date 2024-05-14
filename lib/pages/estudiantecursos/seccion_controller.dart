@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../models/entities/BodyPart.dart';
 
-class SeccionController extends GetxController {
+class EstudianteCursosController extends GetxController {
   Rx<BodyPart?> selectedBodyPart = Rx<BodyPart?>(null);
 
   List<BodyPart> bodyPartList = [

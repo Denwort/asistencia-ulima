@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'exercise_controller.dart';
+import 'estudianteqr_controller.dart';
 
-class ExercisePage extends StatelessWidget {
-  ExerciseController control = Get.put(ExerciseController());
+class EstudianteQRPage extends StatelessWidget {
+  EstudianteQRController control = Get.put(EstudianteQRController());
 
   Widget _buildBody(BuildContext context) {
     return SafeArea(
-      child: Text('Exercise Page'),
+      child: Text('Leer QR'),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
