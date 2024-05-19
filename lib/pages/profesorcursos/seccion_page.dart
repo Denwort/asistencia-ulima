@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'seccionP_controller.dart';
+import 'seccion_controller.dart';
 
 class ProfesorCursosPage extends StatelessWidget {
   ProfesorCursosController control = Get.put(ProfesorCursosController());
@@ -28,7 +28,7 @@ class ProfesorCursosPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment
                   .center, // Centrar los cuadrados horizontalmente
-              children: generarCursos(context ,cantidadDeObjetos),
+              children: generarCursos(context, cantidadDeObjetos),
             ),
           ],
         ),
@@ -68,7 +68,6 @@ class ProfesorCursosPage extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
-                      SizedBox(height: 3),
                       SizedBox(height: 3),
                       Text(
                         'Sección: 823',
