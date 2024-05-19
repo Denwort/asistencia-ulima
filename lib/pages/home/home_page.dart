@@ -121,6 +121,28 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // Logica para estudiante o profesor
+
+  Widget _body(){
+    if (user.rol=='alumno'){
+      return _widgetOptionsEstudiante.elementAt(_selectedIndex);
+    }
+    else if (user.rol=='profesor'){
+      return _widgetOptionsProfesor.elementAt(_selectedIndex);
+    }
+    return Container();
+  }
+
+  Widget _nav(){
+    if (user.rol=='alumno'){
+      return _navigationBottomEstudiante();
+    }
+    else if (user.rol=='profesor'){
+      return _navigationBottomProfesor();
+    }
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     print('usuario en home');
@@ -143,8 +165,8 @@ class _HomePageState extends State<HomePage> {
             _appbarActions(),
           ]
           ),
-      body: user.id==1 ? _widgetOptionsEstudiante.elementAt(_selectedIndex) : _widgetOptionsProfesor.elementAt(_selectedIndex),
-      bottomNavigationBar: user.id==1 ? _navigationBottomEstudiante(): _navigationBottomProfesor(),
+      body: _body(),
+      bottomNavigationBar: _nav(),
     ));
   }
 }

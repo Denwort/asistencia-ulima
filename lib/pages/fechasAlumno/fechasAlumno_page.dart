@@ -41,7 +41,7 @@ class FechasAlumnoPage extends StatelessWidget {
             Expanded(
               child: ListView(
                 padding: EdgeInsets.all(8.0),
-                children: getDateList().map((date) {
+                children: control.asistencias.map((asistencia) {
                   return Card(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -49,7 +49,7 @@ class FechasAlumnoPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${date.day}/${date.month}/${date.year}',
+                            '${asistencia.session.fechaFin.day}/${asistencia.session.fechaFin.month}/${asistencia.session.fechaFin.year}',
                             style: TextStyle(fontSize: 16),
                           ),
                           Checkbox(

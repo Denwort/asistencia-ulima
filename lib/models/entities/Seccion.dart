@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:ulimagym/models/entities/Usuario.dart';
+
 Seccion seccionFromJson(String str) => Seccion.fromJson(json.decode(str));
 
 String seccionToJson(Seccion data) => json.encode(data.toJson());
@@ -9,14 +11,14 @@ class Seccion {
   String codigo;
   String periodo;
   String curso;
-  String profesor;
+  Usuario profesor;
 
   Seccion.empty()
       : id = 0,
         codigo = '',
         periodo = '',
         curso = '',
-        profesor = '';
+        profesor = Usuario.empty();
 
   Seccion({
     required this.id,
@@ -31,7 +33,7 @@ class Seccion {
         codigo: json["codigo"],
         periodo: json["periodo"],
         curso: json["curso"],
-        profesor: json["profesor"],
+        profesor: Usuario.fromJson(json["usuario"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,10 +41,35 @@ class Seccion {
         "codigo": codigo,
         "periodo": periodo,
         "curso": curso,
-        "profesor": profesor,
+        "profesor": profesor.toJson(),
       };
   @override
   String toString() {
-    return 'Usuario -> id: ${id}, codigo: ${this.codigo}, periodo: ${this.periodo}, curso: ${this.curso}, profesor: ${this.profesor}';
+    return 'Seccion -> id: ${id}, codigo: ${this.codigo}, periodo: ${this.periodo}, curso: ${this.curso}, profesor: ${this.profesor}';
   }
+
+  static List<Seccion> lista = [
+    // Secciones de movil, erp y riesgos. todo lo ensenha Pepe.
+    Seccion(
+      id: 0,
+      codigo: '830',
+      periodo: '2024-1',
+      curso: 'Programacion movil',
+      profesor: Usuario.lista[0],
+    ),
+    Seccion(
+      id: 1,
+      codigo: '833',
+      periodo: '2024-1',
+      curso: 'Sistemas ERP',
+      profesor: Usuario.lista[0],
+    ),
+    Seccion(
+      id: 2,
+      codigo: '830',
+      periodo: '2024-1',
+      curso: 'Gestion de riesgos',
+      profesor: Usuario.lista[0],
+    )
+  ];
 }

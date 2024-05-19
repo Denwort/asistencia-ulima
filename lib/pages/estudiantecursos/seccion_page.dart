@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulimagym/models/entities/Seccion.dart';
 import 'seccion_controller.dart';
 
 class EstudianteCursosPage extends StatelessWidget {
@@ -28,7 +29,7 @@ class EstudianteCursosPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment
                   .center, // Centrar los cuadrados horizontalmente
-              children: generarCursos(context ,cantidadDeObjetos),
+              children: generarCursos(context ,control.secciones),
             ),
           ],
         ),
@@ -36,10 +37,10 @@ class EstudianteCursosPage extends StatelessWidget {
     );
   }
 
-  List<Widget> generarCursos(BuildContext context, int cantidad) {
+  List<Widget> generarCursos(BuildContext context, List<Seccion> secciones) {
     List<Widget> cursos = [];
 
-    for (int i = 0; i < cantidad; i++) {
+    for (int i = 0; i < secciones.length; i++) {
       cursos.add(
         Column(
           children: [
@@ -62,7 +63,7 @@ class EstudianteCursosPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Programación Móvil',
+                        secciones[i].curso,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -70,7 +71,7 @@ class EstudianteCursosPage extends StatelessWidget {
                       ),
                       SizedBox(height: 3),
                       Text(
-                        'Profesor: Jose Jesus Valdivia Caballero',
+                        secciones[i].profesor.nombres,
                         style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 16,
@@ -78,7 +79,7 @@ class EstudianteCursosPage extends StatelessWidget {
                       ),
                       SizedBox(height: 3),
                       Text(
-                        'Sección: 823',
+                        'Sección: ${secciones[i].codigo}',
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 14,
@@ -89,7 +90,7 @@ class EstudianteCursosPage extends StatelessWidget {
                 ),
               ),
             ),
-            if (i < cantidad - 1)
+            if (i < secciones.length - 1)
               Divider(
                 height: 20,
                 thickness: 1,
