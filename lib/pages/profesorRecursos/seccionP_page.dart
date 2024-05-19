@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'seccion_controller.dart';
+import 'seccionP_controller.dart';
 
-class EstudianteCursosPage extends StatelessWidget {
-  EstudianteCursosController control = Get.put(EstudianteCursosController());
+class ProfesorCursosPage extends StatelessWidget {
+  ProfesorCursosController control = Get.put(ProfesorCursosController());
 
   Widget _buildBody(BuildContext context, int cantidadDeObjetos) {
     return SafeArea(
@@ -69,13 +69,6 @@ class EstudianteCursosPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 3),
-                      Text(
-                        'Profesor: Jose Jesus Valdivia Caballero',
-                        style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
-                        ),
-                      ),
                       SizedBox(height: 3),
                       Text(
                         'Sección: 823',

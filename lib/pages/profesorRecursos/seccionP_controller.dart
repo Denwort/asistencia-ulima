@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../fechasAlumno/fechasAlumno_page.dart';
 
 
-class EstudianteCursosController extends GetxController {
+class ProfesorCursosController extends GetxController {
 
 void redireccionrAFechas(BuildContext context) {
     Navigator.push(

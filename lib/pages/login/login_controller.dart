@@ -14,6 +14,13 @@ class LoginController extends GetxController {
 
   List<Usuario> usuarios = [
     Usuario(
+      id: 0,
+      usuario: 'Profesor',
+      contrasenia: 'Profesor',
+      nombres: 'Odio',
+      apellidos: 'Aqui',
+    ),
+    Usuario(
       id: 1,
       usuario: 'usuario1',
       contrasenia: 'contrasenia1',
@@ -103,17 +110,35 @@ class LoginController extends GetxController {
         userLogged = u;
       }
     }
+    
+    //se agrego una condicional con el fin de identificar al profesor
+
     if (found) {
-      print('usuario correcto');
-      message.value = 'Usuario correcto';
-      messageColor.value = Colors.green;
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => HomePage(
-                  usuarioLogged: userLogged,
-                )),
-      );
+      if(userLogged.id==0){
+        print('usuario correcto');
+        message.value = 'Usuario Profesor';
+        messageColor.value = Colors.green;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomePage(
+                    usuarioLogged: userLogged,
+                  )),
+        );
+
+      }else{
+        print('usuario correcto');
+        message.value = 'Usuario correcto';
+        messageColor.value = Colors.green;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomePage(
+                    usuarioLogged: userLogged,
+                  )),
+        );
+      }
+      
     } else {
       print('error: usuario incorrecto');
       message.value = 'Usuario incorrecto';
