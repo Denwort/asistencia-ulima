@@ -49,7 +49,7 @@ class Seccion {
   }
 
   static List<Seccion> lista = [
-    // Secciones de movil, erp y riesgos. todo lo ensenha Pepe.
+    // Secciones de movil, erp y riesgos. 2 de Pepe y 1 de nina.
     Seccion(
       id: 0,
       codigo: '830',
@@ -61,15 +61,15 @@ class Seccion {
       id: 1,
       codigo: '833',
       periodo: '2024-1',
-      curso: 'Sistemas ERP',
+      curso: 'Taller de propuesta de investigacion',
       profesor: Usuario.lista[0],
     ),
     Seccion(
       id: 2,
-      codigo: '830',
+      codigo: '831',
       periodo: '2024-1',
-      curso: 'Gestion de riesgos',
-      profesor: Usuario.lista[0],
+      curso: 'Ingenieria de software 2',
+      profesor: Usuario.lista[1],
     )
   ];
 }

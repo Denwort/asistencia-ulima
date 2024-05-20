@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulimagym/models/entities/Usuario.dart';
 import 'profile_controller.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'package:ulimagym/pages/login/login_page.dart';
 
 class ProfilePage extends StatelessWidget {
-  final ProfileController control = Get.put(ProfileController());
+  final Usuario usuario;
+  ProfilePage({required this.usuario});
 
-  ProfilePage({Key? key}) : super(key: key);
+  ProfileController control = Get.put(ProfileController());
 
   Widget _buildBody(BuildContext context) {
     return SafeArea(

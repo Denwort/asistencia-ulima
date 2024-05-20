@@ -48,7 +48,8 @@ class Sesion {
     }
 
     static List<Sesion> lista = [
-      // Solo asistencias para Pepe. Para probar, solo hay 4 sesiones
+      // hay 4 sesiones para movil, 2 para tpi, 3 para sw2
+      // Movil
       Sesion(
         id: 0,
         fechaInicio: DateTime(2024, 05, 21, 7),
@@ -72,6 +73,38 @@ class Sesion {
         fechaInicio: DateTime(2024, 05, 31, 7),
         fechaFin: DateTime(2024, 05, 31, 10),
         seccion: Seccion.lista[0],
+      ),
+      // TPI
+      Sesion(
+        id: 4,
+        fechaInicio: DateTime(2024, 05, 29, 16),
+        fechaFin: DateTime(2024, 05, 29, 18),
+        seccion: Seccion.lista[1],
+      ),
+      Sesion(
+        id: 5,
+        fechaInicio: DateTime(2024, 05, 31, 11),
+        fechaFin: DateTime(2024, 05, 31, 13),
+        seccion: Seccion.lista[1],
+      ),
+      // SW2
+      Sesion(
+        id: 6,
+        fechaInicio: DateTime(2024, 05, 22, 14),
+        fechaFin: DateTime(2024, 05, 22, 16),
+        seccion: Seccion.lista[2],
+      ),
+      Sesion(
+        id: 7,
+        fechaInicio: DateTime(2024, 05, 25, 14),
+        fechaFin: DateTime(2024, 05, 25, 17),
+        seccion: Seccion.lista[2],
+      ),
+      Sesion(
+        id: 8,
+        fechaInicio: DateTime(2024, 05, 29, 14),
+        fechaFin: DateTime(2024, 05, 29, 16),
+        seccion: Seccion.lista[2],
       )
     ];
     

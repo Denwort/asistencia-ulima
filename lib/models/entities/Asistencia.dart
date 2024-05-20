@@ -49,30 +49,105 @@ class Asistencia {
     }
 
     static List<Asistencia> lista = [
-      // Fue a las sesiones 1, 3 y 4.
+      // Mateo fue a las sesiones 1, 3 y 4 de movil. solo la 2 de tpi. a la 1 y 3 de sw2.
+      // Cliff fue a sesiones 1,2,4 de movil. solo a la 1 de tpi.
+      // Mateo
+      //  Movil
       Asistencia(
         id: 0,
         asistio: true,
-        alumno: Usuario.lista[1],
+        alumno: Usuario.lista[2],
         session: Sesion.lista[0],
       ),
       Asistencia(
         id: 1,
         asistio: false,
-        alumno: Usuario.lista[1],
+        alumno: Usuario.lista[2],
         session: Sesion.lista[1],
       ),
       Asistencia(
         id: 2,
         asistio: true,
-        alumno: Usuario.lista[1],
+        alumno: Usuario.lista[2],
         session: Sesion.lista[2],
       ),
       Asistencia(
         id: 3,
         asistio: true,
-        alumno: Usuario.lista[1],
+        alumno: Usuario.lista[2],
         session: Sesion.lista[3],
       ),
+      //  TPI
+      Asistencia(
+        id: 4,
+        asistio: false,
+        alumno: Usuario.lista[2],
+        session: Sesion.lista[4],
+      ),
+      Asistencia(
+        id: 5,
+        asistio: true,
+        alumno: Usuario.lista[2],
+        session: Sesion.lista[5],
+      ),
+      //  SW2
+      Asistencia(
+        id: 6,
+        asistio: true,
+        alumno: Usuario.lista[2],
+        session: Sesion.lista[6],
+      ),
+      Asistencia(
+        id: 7,
+        asistio: false,
+        alumno: Usuario.lista[2],
+        session: Sesion.lista[7],
+      ),
+      Asistencia(
+        id: 8,
+        asistio: true,
+        alumno: Usuario.lista[2],
+        session: Sesion.lista[8],
+      ),
+      // Cliff
+      //  Movil
+      Asistencia(
+        id: 9,
+        asistio: true,
+        alumno: Usuario.lista[3],
+        session: Sesion.lista[0],
+      ),
+      Asistencia(
+        id: 10,
+        asistio: true,
+        alumno: Usuario.lista[3],
+        session: Sesion.lista[1],
+      ),
+      Asistencia(
+        id: 11,
+        asistio: false,
+        alumno: Usuario.lista[3],
+        session: Sesion.lista[2],
+      ),
+      Asistencia(
+        id: 12,
+        asistio: true,
+        alumno: Usuario.lista[3],
+        session: Sesion.lista[3],
+      ),
+      //  TPI
+      Asistencia(
+        id: 13,
+        asistio: true,
+        alumno: Usuario.lista[3],
+        session: Sesion.lista[4],
+      ),
+      Asistencia(
+        id: 14,
+        asistio: false,
+        alumno: Usuario.lista[3],
+        session: Sesion.lista[5],
+      ),
+      
     ];
 }

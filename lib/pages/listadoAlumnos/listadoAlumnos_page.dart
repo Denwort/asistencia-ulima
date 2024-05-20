@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Seccion.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
-import 'fechasAlumno_controller.dart';
+import './listadoAlumnos_controller.dart';
 
-class FechasAlumnoPage extends StatelessWidget {
+class ProfesorListadoAlumnos extends StatelessWidget {
   final Seccion seccion;
   final Usuario usuario;
-  FechasAlumnoPage({required this.seccion, required this.usuario});
+  ProfesorListadoAlumnos({required this.seccion, required this.usuario});
 
-  FechasAlumnoController control = Get.put(FechasAlumnoController());
+  ProfesorListadoAlumnosController control = Get.put(ProfesorListadoAlumnosController());
 
   DateTime startDate = DateTime(2024, 4, 1);
   int weeksCount = 16;
@@ -47,24 +47,23 @@ class FechasAlumnoPage extends StatelessWidget {
             Expanded(
               child: ListView(
                 padding: EdgeInsets.all(8.0),
-                children: control.getAsistencias(seccion, usuario).map((asistencia) {
-                  return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${asistencia.session.fechaFin.day}/${asistencia.session.fechaFin.month}/${asistencia.session.fechaFin.year}',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Checkbox(
-                            value: asistencia.asistio,
-                            onChanged: (bool? newValue) {
-                              // Acción cuando se cambia el valor del checkbox
-                            },
-                          ),
-                        ],
+                children: control.getEstudiantes(seccion, usuario).map<Widget>((estudiante) {
+                  return InkWell(
+                    onTap: () {
+                      control.redireccionrAFechas(context, seccion, estudiante);
+                    },
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${estudiante.nombres} ${estudiante.apellidos}',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
