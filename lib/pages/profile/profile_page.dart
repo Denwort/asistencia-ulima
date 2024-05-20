@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulimagym/models/entities/Usuario.dart';
 import 'profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
+  final Usuario usuario;
+  ProfilePage({required this.usuario});
+
   ProfileController control = Get.put(ProfileController());
 
   Widget _buildBody(BuildContext context) {

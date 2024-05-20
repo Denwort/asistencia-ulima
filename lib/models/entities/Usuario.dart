@@ -53,22 +53,38 @@ class Usuario {
   }
 
   static List<Usuario> lista = [
-    // Lista de usuarios. 1 pepe y 1 mateo.
+    // Lista de usuarios. 1 pepe, 1 nina, 1 mateo y 1 cliff.
     Usuario(
       id: 0,
       usuario: 'profesor',
-      contrasenia: 'profesor',
+      contrasenia: '',
       rol: 'profesor',
       nombres: 'Pepe',
       apellidos: 'Valdivia',
     ),
     Usuario(
       id: 1,
-      usuario: 'usuario1',
-      contrasenia: 'contrasenia1',
+      usuario: 'profesor2',
+      contrasenia: '',
+      rol: 'profesor',
+      nombres: 'Hernan',
+      apellidos: 'Nina',
+    ),
+    Usuario(
+      id: 2,
+      usuario: 'usuario',
+      contrasenia: '',
       rol: 'alumno',
       nombres: 'mateo',
       apellidos: 'alvarez',
-    )
+    ),
+    Usuario(
+      id: 1,
+      usuario: 'usuario3',
+      contrasenia: '',
+      rol: 'alumno',
+      nombres: 'cliff',
+      apellidos: 'de la cruz',
+    ),
   ];
 }

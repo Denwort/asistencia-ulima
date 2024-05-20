@@ -43,21 +43,31 @@ class Matricula {
       return 'Matricula -> id: ${id}, alumno: ${this.alumno}, seccion: ${this.seccion}';
     }
     static List<Matricula> lista = [
-      // El usuario[1]=Mateo esta en los 3 cursos.
+      // Mateo esta en los 3 cursos: 2 de pepe y 1 de nina. Cliff en 2 de pepe
       Matricula(
         id: 0,
-        alumno: Usuario.lista[1],
+        alumno: Usuario.lista[2],
         seccion: Seccion.lista[0],
       ),
       Matricula(
         id: 1,
-        alumno: Usuario.lista[1],
+        alumno: Usuario.lista[2],
         seccion: Seccion.lista[1],
       ),
       Matricula(
-        id: 2,
-        alumno: Usuario.lista[1],
+        id: 1,
+        alumno: Usuario.lista[2],
         seccion: Seccion.lista[2],
+      ),
+      Matricula(
+        id: 1,
+        alumno: Usuario.lista[3],
+        seccion: Seccion.lista[0],
+      ),
+      Matricula(
+        id: 1,
+        alumno: Usuario.lista[3],
+        seccion: Seccion.lista[1],
       )
     ];
 }

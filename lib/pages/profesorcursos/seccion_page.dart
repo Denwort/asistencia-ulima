@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulimagym/models/entities/Seccion.dart';
+import 'package:ulimagym/models/entities/Usuario.dart';
 import 'seccion_controller.dart';
 
 class ProfesorCursosPage extends StatelessWidget {
+  final Usuario usuario;
+  ProfesorCursosPage({required this.usuario});
   ProfesorCursosController control = Get.put(ProfesorCursosController());
 
-  Widget _buildBody(BuildContext context, int cantidadDeObjetos) {
+  Widget _buildBody(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -28,7 +32,7 @@ class ProfesorCursosPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment
                   .center, // Centrar los cuadrados horizontalmente
-              children: generarCursos(context, cantidadDeObjetos),
+              children: generarCursos(context, control.getSecciones(usuario)),
             ),
           ],
         ),
@@ -36,16 +40,16 @@ class ProfesorCursosPage extends StatelessWidget {
     );
   }
 
-  List<Widget> generarCursos(BuildContext context, int cantidad) {
+  List<Widget> generarCursos(BuildContext context, List<Seccion> secciones) {
     List<Widget> cursos = [];
 
-    for (int i = 0; i < cantidad; i++) {
+    for (int i = 0; i < secciones.length; i++) {
       cursos.add(
         Column(
           children: [
             InkWell(
               onTap: () {
-                control.redireccionrAFechas(context);
+                control.redireccionrAFechas(context, secciones[i], usuario);
               },
               child: Container(
                 width: 330,
@@ -62,7 +66,7 @@ class ProfesorCursosPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Programación Móvil',
+                        secciones[i].curso,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -70,7 +74,7 @@ class ProfesorCursosPage extends StatelessWidget {
                       ),
                       SizedBox(height: 3),
                       Text(
-                        'Sección: 823',
+                        'Sección: ${secciones[i].codigo}',
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 14,
@@ -81,7 +85,7 @@ class ProfesorCursosPage extends StatelessWidget {
                 ),
               ),
             ),
-            if (i < cantidad - 1)
+            if (i < secciones.length - 1)
               Divider(
                 height: 20,
                 thickness: 1,
@@ -103,7 +107,7 @@ class ProfesorCursosPage extends StatelessWidget {
         home: Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: null,
-      body: _buildBody(context, 7),
+      body: _buildBody(context),
     ));
   }
 }

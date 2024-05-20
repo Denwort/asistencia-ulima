@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Seccion.dart';
+import 'package:ulimagym/models/entities/Usuario.dart';
 import 'seccion_controller.dart';
 
 class EstudianteCursosPage extends StatelessWidget {
+  final Usuario usuario;
+  EstudianteCursosPage({required this.usuario});
+
   EstudianteCursosController control = Get.put(EstudianteCursosController());
 
-  Widget _buildBody(BuildContext context, int cantidadDeObjetos) {
+  Widget _buildBody(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -29,7 +33,7 @@ class EstudianteCursosPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment
                   .center, // Centrar los cuadrados horizontalmente
-              children: generarCursos(context ,control.secciones),
+              children: generarCursos(context ,control.getSecciones(usuario)),
             ),
           ],
         ),
@@ -46,7 +50,7 @@ class EstudianteCursosPage extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                control.redireccionrAFechas(context);
+                control.redireccionrAFechas(context, secciones[i], usuario);
               },
               child: Container(
                 width: 330,
@@ -71,7 +75,7 @@ class EstudianteCursosPage extends StatelessWidget {
                       ),
                       SizedBox(height: 3),
                       Text(
-                        secciones[i].profesor.nombres,
+                        '${secciones[i].profesor.nombres} ${secciones[i].profesor.apellidos}',
                         style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 16,
@@ -112,7 +116,7 @@ class EstudianteCursosPage extends StatelessWidget {
         home: Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: null,
-      body: _buildBody(context, 7),
+      body: _buildBody(context),
     ));
   }
 }

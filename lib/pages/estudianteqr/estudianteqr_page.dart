@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulimagym/models/entities/Usuario.dart';
 import 'estudianteqr_controller.dart';
 
 class EstudianteQRPage extends StatelessWidget {
+  final Usuario usuario;
+  EstudianteQRPage({required this.usuario});
+
   EstudianteQRController control = Get.put(EstudianteQRController());
 
   Widget _buildBody(BuildContext context) {

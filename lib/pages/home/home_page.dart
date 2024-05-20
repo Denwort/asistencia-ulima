@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
+import 'package:ulimagym/pages/profesorcursos/seccion_page.dart';
 import 'package:ulimagym/pages/profile/profile_page.dart';
 import 'package:ulimagym/pages/estudiantecursos/seccion_page.dart';
 import 'package:ulimagym/pages/acercade/acercade_page.dart';
@@ -24,21 +25,27 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final Usuario user;
 
+  late List<Widget> _widgetOptionsEstudiante;
+  late List<Widget> _widgetOptionsProfesor;
+
   _HomePageState({required this.user});
 
-  // Paginas para el estudiante
-  static List<Widget> _widgetOptionsEstudiante = <Widget>[
-    EstudianteCursosPage(),
-    EstudianteQRPage(),
-    ProfilePage(),
-  ];
+  @override
+  void initState() {
+    super.initState();
 
-  // Paginas para el profesor
-  static List<Widget> _widgetOptionsProfesor = <Widget>[
-    EstudianteCursosPage(),
-    ProfesorQRPage(),
-    ProfilePage(),
-  ];
+    _widgetOptionsEstudiante = <Widget>[
+      EstudianteCursosPage(usuario: user),
+      EstudianteQRPage(usuario: user),
+      ProfilePage(usuario: user),
+    ];
+
+    _widgetOptionsProfesor = <Widget>[
+      ProfesorCursosPage(usuario: user),
+      ProfesorQRPage(usuario: user),
+      ProfilePage(usuario: user),
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
