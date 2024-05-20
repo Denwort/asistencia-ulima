@@ -4,21 +4,21 @@ import 'package:ulimagym/models/entities/Usuario.dart';
 class ProfileController extends GetxController {
   var usuario = Usuario.empty().obs;
 
-  @override
-  void onInit() {
-    // Aquí puedes cargar los datos del usuario
-    super.onInit();
-  }
-
-  void cargarUsuario(Usuario user) {
-    usuario.value = user;
+  // Simula la carga de datos del usuario (puedes adaptar esto para usar una API real)
+  void cargarUsuario(int id) {
+    Usuario? user = Usuario.lista.firstWhere((u) => u.id == id, orElse: () => Usuario.empty());
+    if (user != null) {
+      usuario.value = user;
+    }
   }
 
   void cambiarContrasenia() {
-    // Lógica para cambiar contraseña
+    // Implementa la lógica para cambiar la contraseña
+    print("Cambiando contraseña");
   }
 
   void cerrarSesion() {
-    // Lógica para cerrar sesión
+    // Implementa la lógica para cerrar sesión
+    print("Cerrando sesión");
   }
 }
