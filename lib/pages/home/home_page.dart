@@ -54,8 +54,8 @@ class _HomePageState extends State<HomePage> {
           label: 'Estudiante-Cursos',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.addchart_outlined),
-          label: 'Estudiante-QR',
+          icon: Icon(Icons.qr_code_scanner),
+          label: 'Escanear-QR',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
@@ -76,8 +76,8 @@ class _HomePageState extends State<HomePage> {
           label: 'Profesor-Cursos',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.addchart_outlined),
-          label: 'Profesor-QR',
+          icon: Icon(Icons.qr_code),
+          label: 'Generar-QR',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
