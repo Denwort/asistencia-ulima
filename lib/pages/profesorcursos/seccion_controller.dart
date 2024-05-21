@@ -15,7 +15,7 @@ class ProfesorCursosController extends GetxController {
   }
 
   List<Seccion> getSecciones(Usuario yo){
-    List<Seccion> secciones = Seccion.lista.where((element) => (element.profesor==yo)).toList();
+    List<Seccion> secciones = Seccion.lista.where((element) => (element.profesor.id==yo.id)).toList();
     return secciones;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
+import 'package:ulimagym/pages/login/login_page.dart';
 import 'package:ulimagym/pages/profesorcursos/seccion_page.dart';
 import 'package:ulimagym/pages/profile/profile_page.dart';
 import 'package:ulimagym/pages/estudiantecursos/seccion_page.dart';
@@ -9,6 +10,7 @@ import 'package:ulimagym/pages/profesorqr/profesorqr_page.dart';
 import 'package:ulimagym/pages/estudianteqr/estudianteqr_page.dart';
 
 import 'home_controller.dart';
+import '../../auth/authService.dart';
 
 class HomePage extends StatefulWidget {
   final Usuario usuarioLogged;
@@ -98,24 +100,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _appbarActions() {
-    return PopupMenuButton<int>(
-      onSelected: (value) {
-        if (value == 1) {
+    return PopupMenuButton<String>(
+      onSelected: (value) async {
+        if (value == 'acercade') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => AcercadePage()),
           );
-        } else if (value == 2) {
-          Navigator.pop(context);
+        } else if (value == 'cerrarsesion') {
+          await AuthService().removeUsuario();
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (context) => LoginPage()
+                ),
+                (Route<dynamic> route) => false,
+          );
         }
       },
-      itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
-        PopupMenuItem<int>(
-          value: 1,
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+        PopupMenuItem<String>(
+          value: 'acercade',
           child: Text('Acerca de'),
         ),
-        PopupMenuItem<int>(
-          value: 2,
+        PopupMenuItem<String>(
+          value: 'cerrarsesion',
           child: Text('Cerrar sesion'),
         ),
       ],

@@ -9,7 +9,7 @@ import 'package:ulimagym/pages/fechasAlumno/fechasAlumno_page.dart';
 
 class ProfesorListadoAlumnosController extends GetxController {
   List<Usuario> getEstudiantes(Seccion seccion, Usuario usuario){
-    List<Matricula> matriculas = Matricula.lista.where((element) => (element.seccion==seccion)).toList();
+    List<Matricula> matriculas = Matricula.lista.where((element) => (element.seccion.id==seccion.id)).toList();
     List<Usuario> matriculados = matriculas.map((e) => e.alumno).toList();
     return matriculados;
   }
