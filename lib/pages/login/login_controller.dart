@@ -5,6 +5,7 @@ import 'package:ulimagym/pages/home/home_page.dart';
 import '../../models/entities/Usuario.dart';
 import '../recover/recover_page.dart';
 import '../signin/signin_page.dart';
+import '../../auth/authService.dart';
 
 class LoginController extends GetxController {
   TextEditingController userController = TextEditingController();
@@ -14,7 +15,7 @@ class LoginController extends GetxController {
 
   List<Usuario> usuarios = Usuario.lista;
 
-  void login(BuildContext context) {
+  Future<void> login(BuildContext context) async {
     print('hola desde el controlador');
     print(userController.text);
     print(passController.text);
@@ -36,30 +37,16 @@ class LoginController extends GetxController {
     //se agrego una condicional con el fin de identificar al profesor
 
     if (found) {
-      if(userLogged.id==0){
-        print('usuario correcto');
-        message.value = 'Usuario Profesor';
-        messageColor.value = Colors.green;
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => HomePage(
-                    usuarioLogged: userLogged,
-                  )),
-        );
-
-      }else{
-        print('usuario correcto');
-        message.value = 'Usuario correcto';
-        messageColor.value = Colors.green;
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => HomePage(
-                    usuarioLogged: userLogged,
-                  )),
-        );
-      }
+      print('usuario correcto');
+      message.value = 'Usuario correcto';
+      messageColor.value = Colors.green;
+      await AuthService().saveUsuario(userLogged);
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+            builder: (context) => HomePage(usuarioLogged: userLogged,)
+            ),
+            (Route<dynamic> route) => false,
+      );
       
     } else {
       print('error: usuario incorrecto');
