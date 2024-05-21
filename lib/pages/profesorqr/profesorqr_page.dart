@@ -2,11 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'profesorqr_controller.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class ProfesorQRPage extends StatelessWidget {
   final Usuario usuario;
   ProfesorQRPage({required this.usuario});
   ProfesorQRController control = Get.put(ProfesorQRController());
+
+Widget _qrImagen() {
+  return Obx(() {
+    if (control.mostrar.value) {
+      return Center(
+        child: Column(
+          children: [
+            QrImageView(
+              data: control.qrData.value,
+              size: 280,
+              embeddedImageStyle: QrEmbeddedImageStyle(
+                size: const Size(
+                  100,
+                  100,
+                ),
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.orange, // Color morado
+              ),
+              onPressed: () {
+                control.ocultarQR();
+              },
+              child: Text('Ocultar QR'),
+            ),
+          ],
+        ),
+      );
+    }
+    return Container();
+  });
+}
+
 
   Widget _buildBody(BuildContext context) {
     return SafeArea(
@@ -17,11 +52,11 @@ class ProfesorQRPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(
-                'Este es un generador de códigos QR. Ingrese el texto que desea codificar y presione el botón "Generar QR".',
+                'Este es un generador de códigos QR para las asistencias de los alumnos.',
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 0),
             ElevatedButton(
               onPressed: () {
                 _showMessageDialog(context);
@@ -33,6 +68,10 @@ class ProfesorQRPage extends StatelessWidget {
                 'Generar QR',
                 style: TextStyle(fontSize: 20,),
               ),
+            ),
+            SizedBox(height: 30),
+            Container(
+              child: _qrImagen(),
             ),
           ],
         ),
@@ -50,7 +89,7 @@ class ProfesorQRPage extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                control.aceptarPopup(context);
               },
               child: Text('Continuar', style: TextStyle(color: Colors.orange),),
             ),
