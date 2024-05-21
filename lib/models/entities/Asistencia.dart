@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Sesion.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 
@@ -13,7 +14,7 @@ String asistenciaToJson(Asistencia data) => json.encode(data.toJson());
 
 class Asistencia {
     int id;
-    bool asistio;
+    RxBool asistio;
     Usuario alumno;
     Sesion session;
 
@@ -26,7 +27,7 @@ class Asistencia {
 
     Asistencia.empty()
       : id = 0,
-        asistio = false,
+        asistio = false.obs,
         alumno = Usuario.empty(),
         session = Sesion.empty();
 
@@ -55,57 +56,57 @@ class Asistencia {
       //  Movil
       Asistencia(
         id: 0,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[0],
       ),
       Asistencia(
         id: 1,
-        asistio: false,
+        asistio: false.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[1],
       ),
       Asistencia(
         id: 2,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[2],
       ),
       Asistencia(
         id: 3,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[3],
       ),
       //  TPI
       Asistencia(
         id: 4,
-        asistio: false,
+        asistio: false.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[4],
       ),
       Asistencia(
         id: 5,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[5],
       ),
       //  SW2
       Asistencia(
         id: 6,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[6],
       ),
       Asistencia(
         id: 7,
-        asistio: false,
+        asistio: false.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[7],
       ),
       Asistencia(
         id: 8,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[8],
       ),
@@ -113,38 +114,38 @@ class Asistencia {
       //  Movil
       Asistencia(
         id: 9,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[3],
         session: Sesion.lista[0],
       ),
       Asistencia(
         id: 10,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[3],
         session: Sesion.lista[1],
       ),
       Asistencia(
         id: 11,
-        asistio: false,
+        asistio: false.obs,
         alumno: Usuario.lista[3],
         session: Sesion.lista[2],
       ),
       Asistencia(
         id: 12,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[3],
         session: Sesion.lista[3],
       ),
       //  TPI
       Asistencia(
         id: 13,
-        asistio: true,
+        asistio: true.obs,
         alumno: Usuario.lista[3],
         session: Sesion.lista[4],
       ),
       Asistencia(
         id: 14,
-        asistio: false,
+        asistio: false.obs,
         alumno: Usuario.lista[3],
         session: Sesion.lista[5],
       ),
