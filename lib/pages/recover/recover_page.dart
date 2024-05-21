@@ -151,7 +151,7 @@ class RecoverPage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/login.png'),
+          image: AssetImage('assets/images/recuperar.png'),
           fit: BoxFit.cover,
         ),
       ),

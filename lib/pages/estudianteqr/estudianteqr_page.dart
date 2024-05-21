@@ -48,7 +48,7 @@ class EstudianteQR extends State<EstudianteQRPage> {
             child: Center(
               child: (qrText != null)
                   ? Text('Código QR: $qrText')
-                  : Text('Escanea un código QR'),
+                  : Text('Escanea un QR'),
             ),
           )
         ],
