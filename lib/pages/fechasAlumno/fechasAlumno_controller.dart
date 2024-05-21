@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Asistencia.dart';
 import 'package:ulimagym/models/entities/Seccion.dart';
@@ -10,5 +11,5 @@ class FechasAlumnoController extends GetxController {
     List<Asistencia> asistencias = Asistencia.lista.where((element) => (sesiones.contains(element.session)) && (element.alumno.id==usuario.id)).toList();
     return asistencias;
   }
-  
+
 }

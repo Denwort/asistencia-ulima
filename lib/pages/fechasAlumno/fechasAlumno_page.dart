@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulimagym/models/entities/Asistencia.dart';
 import 'package:ulimagym/models/entities/Seccion.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'fechasAlumno_controller.dart';
@@ -58,12 +59,16 @@ class FechasAlumnoPage extends StatelessWidget {
                             '${asistencia.session.fechaFin.day}/${asistencia.session.fechaFin.month}/${asistencia.session.fechaFin.year}',
                             style: TextStyle(fontSize: 16),
                           ),
-                          Checkbox(
-                            value: asistencia.asistio,
-                            onChanged: (bool? newValue) {
+                          Obx(() => Checkbox(
+                            value: asistencia.asistio.value,
+                            onChanged: (bool? nueva_asistencia) {
+                              asistencia.asistio.value = nueva_asistencia!;
+                              Asistencia.lista[asistencia.id].asistio = nueva_asistencia!.obs;
+                              print(nueva_asistencia!.obs);
                               // Acción cuando se cambia el valor del checkbox
                             },
-                          ),
+                          ),),
+            
                         ],
                       ),
                     ),
@@ -87,4 +92,5 @@ class FechasAlumnoPage extends StatelessWidget {
       ),
     );
   }
+  
 }
