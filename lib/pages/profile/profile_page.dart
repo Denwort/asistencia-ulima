@@ -17,15 +17,6 @@ class ProfilePage extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Obx(() {
-          Usuario usuario = control.usuario.value;
-          return Text(
-            usuario.rol == 'profesor' ? 'Perfil del Profesor' : 'Perfil del Alumno',
-          );
-        }),
-        backgroundColor: Color(0XFFF26F29),
-      ),
       body: SafeArea(
         child: Obx(() {
           Usuario usuario = control.usuario.value;
@@ -35,6 +26,18 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 15),
+                  child: Text(
+                    usuario.rol == 'profesor' ? 'Perfil del Profesor' : 'Perfil del Alumno',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
                 Center(
                   child: CircleAvatar(
                     radius: 50,
@@ -55,27 +58,39 @@ class ProfilePage extends StatelessWidget {
                 SizedBox(height: 10),
                 Center(
                   child: Text(
-                    usuario.rol, // Mostramos el usuario
+                    usuario.rol,
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    control.cambiarContrasenia();
-                  },
-                  child: Text('Cambiar Contraseña'),
-                ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    control.cerrarSesion();
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
-                  },
-                  child: Text('Cerrar Sesión'),
+                SizedBox(height: 60),
+                Align(
+                  alignment: Alignment.center,
+                  child: FractionallySizedBox(
+                    widthFactor: 0.6, // 60% del ancho del contenedor padre
+                    child: TextButton(
+                      onPressed: () {
+                        control.cerrarSesion();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: Color(0XFFF26F29), // Color de fondo del botón
+                        padding: EdgeInsets.zero, // Padding cero para eliminar el espacio interno
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero, // Bordes cero para eliminar los bordes
+                        ),
+                      ),
+                      child: Text(
+                        'Cerrar sesión',
+                        style: TextStyle(
+                          color: Colors.white, // Color del texto
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
