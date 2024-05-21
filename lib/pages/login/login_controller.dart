@@ -4,13 +4,12 @@ import 'package:get/get_rx/get_rx.dart';
 import 'package:ulimagym/pages/home/home_page.dart';
 import '../../models/entities/Usuario.dart';
 import '../recover/recover_page.dart';
-import '../signin/signin_page.dart';
 import '../../auth/authService.dart';
 
 class LoginController extends GetxController {
   TextEditingController userController = TextEditingController();
   TextEditingController passController = TextEditingController();
-  RxString message = 'primer mensaje'.obs;
+  RxString message = ''.obs;
   var messageColor = Colors.white.obs;
 
   List<Usuario> usuarios = Usuario.lista;
@@ -56,13 +55,6 @@ class LoginController extends GetxController {
     Future.delayed(Duration(seconds: 5), () {
       message.value = '';
     });
-  }
-
-  void goToSignIn(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => SignInPage()),
-    );
   }
 
   void goToRecover(BuildContext context) {

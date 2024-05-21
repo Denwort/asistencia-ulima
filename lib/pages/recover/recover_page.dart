@@ -1,213 +1,160 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/pages/login/login_page.dart';
-import 'package:ulimagym/pages/signin/signin_page.dart';
 import 'recover_controller.dart';
 
 class RecoverPage extends StatelessWidget {
-  RecoverController control = Get.put(RecoverController());
+  final RecoverController control = Get.put(RecoverController());
 
-  Widget _form(BuildContext context, bool isKeyBoardOpen) {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
+      body: _buildBody(context),
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    final bool isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
+
+    return Stack(
+      children: [
+        _imageBackground(),
+        Center(
+          child: SingleChildScrollView(
+            physics: ClampingScrollPhysics(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 32.0),
+                  child: _form(context, isKeyboardOpen),
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _form(BuildContext context, bool isKeyboardOpen) {
     return Container(
-      height: 300,
+      padding: EdgeInsets.all(24.0),
+      margin: EdgeInsets.fromLTRB(0.0, 0.0 , 0.0 , isKeyboardOpen ? 200.0 : 0.0),
       decoration: BoxDecoration(
-          border: Border.all(color: Color(0XFF999999), width: 2.0),
-          color: Colors.white),
-      margin: EdgeInsets.fromLTRB(
-        MediaQuery.of(context).size.width * 0.1, // Margen izquierdo
-        MediaQuery.of(context).size.width *
-            (isKeyBoardOpen ? 0.3 : 0.9), // Margen superior
-        MediaQuery.of(context).size.width * 0.1, // Margen derecho
-        MediaQuery.of(context).size.width * 0.1, // Margen inferior
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 7,
+            offset: Offset(0, 3),
+          ),
+        ],
       ),
-      padding: EdgeInsets.all(20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 15,
+          SizedBox(height: 15),
+          Text(
+            'Olvidó su Contraseña?',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFFF26F29),
+            ),
           ),
-          /*Image.network(
-            'https://upload.wikimedia.org/wikipedia/commons/0/0e/ULIMA_logo.png', // URL de la imagen
-            width: 40, // Ancho de la imagen
-            height: 40, // Alto de la imagen
-            fit: BoxFit.cover, // Ajuste de la imagen
-          ),*/
-          Text('Olvidó su Contraseña?'),
-          SizedBox(
-            height: 10,
+          SizedBox(height: 10),
+          TextFormField(
+            style: TextStyle(fontSize: 16),
+            decoration: InputDecoration(
+              labelText: 'DNI',
+              labelStyle: TextStyle(color: Colors.black),
+              prefixIcon: Icon(Icons.person),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.zero,
+              ),
+              contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black),
+              ),
+            ),
+            controller: control.dniController,
           ),
-          Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-            TextField(
-              style: TextStyle(fontSize: 16),
-              decoration: InputDecoration(
-                labelText: 'DNI', // Etiqueta del campo de texto
-                labelStyle: TextStyle(color: Colors.black),
-                border: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.zero), // Borde del campo de texto
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.black), // Color del borde al enfocar
-                ),
+          SizedBox(height: 6),
+          TextFormField(
+            style: TextStyle(fontSize: 16),
+            decoration: InputDecoration(
+              labelText: 'Correo',
+              labelStyle: TextStyle(color: Colors.black),
+              prefixIcon: Icon(Icons.email),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.zero,
               ),
-              controller: control.dniController,
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            TextField(
-              style: TextStyle(fontSize: 16),
-              decoration: InputDecoration(
-                labelText: 'Correo', // Etiqueta del campo de texto
-                labelStyle: TextStyle(color: Colors.black),
-                border: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.zero), // Borde del campo de texto
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.black), // Color del borde al enfocar
-                ),
+              contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black),
               ),
-              controller: control.emailController,
             ),
-            SizedBox(
-              width: double.infinity, // Ocupar todo el ancho disponible
-              child: TextButton(
-                onPressed: () {
-                  // Función que se ejecuta cuando se presiona el botón
-                  control.resetPassword();
-                },
-                style: TextButton.styleFrom(
-                  backgroundColor:
-                      Color(0XFFF26F29), // Color de fondo del botón
-                  padding: EdgeInsets
-                      .zero, // Padding cero para eliminar el espacio interno
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius
-                        .zero, // Bordes cero para eliminar los bordes
-                  ),
+            controller: control.emailController,
+          ),
+          SizedBox(height: 20),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                control.resetPassword();
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFF26F29),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
                 ),
+                padding: EdgeInsets.zero,
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 16),
                 child: Text(
                   'Recuperar Contraseña',
                   style: TextStyle(
-                    color: Colors.white, // Color del texto
+                    color: Colors.white,
                     fontSize: 14,
                   ),
                 ),
               ),
             ),
-            Obx(() => Text(
-                  control.message.value,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: control.messageColor.value,
-                  ),
-                )),
-            _links(context)
-          ])
+          ),
+          SizedBox(height: 16),
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              'Ingresar',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFF26F29),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _links(BuildContext context) {
+  Widget _imageBackground() {
     return Container(
-      child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-        SizedBox(
-          height: 10,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/login.png'),
+          fit: BoxFit.cover,
         ),
-        Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  print('clicked Ingresar');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
-                child: Text(
-                  'Ingresar',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0XFFF26F29),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignInPage()),
-                  );
-                },
-                child: Text(
-                  'Crear Cuenta',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0XFFF26F29),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        )
-      ]),
-    );
-  }
-
-  Widget _background(BuildContext context) {
-    return Container(color: Color(0XFFF2F2F2));
-  }
-
-  Widget _imageBackground(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/login.png'),
-                      fit: BoxFit.cover)),
-            ),
-            flex: 1),
-        Expanded(child: Text(''), flex: 1),
-      ],
-    );
-  }
-
-  Widget _buildBody(BuildContext context) {
-    final bool isKeyBoardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
-    print('1 +++++++++++++++++++++++++');
-    print(isKeyBoardOpen);
-    print('2 +++++++++++++++++++++++++');
-    return Stack(children: [
-      _background(context),
-      _imageBackground(context),
-      _form(context, isKeyBoardOpen)
-    ]);
-  }
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(body: _buildBody(context)),
+      ),
     );
   }
 }
