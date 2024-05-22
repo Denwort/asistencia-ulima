@@ -3,14 +3,15 @@ import 'package:ulimagym/models/entities/Seccion.dart';
 import 'package:flutter/material.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'package:ulimagym/pages/listadoAlumnos/listadoAlumnos_page.dart';
+import 'package:ulimagym/pages/profesorFechas/profesorFechas_page.dart';
 import '../fechasAlumno/fechasAlumno_page.dart';
 
 class ProfesorCursosController extends GetxController {
+  
   void redireccionrAFechas(BuildContext context, Seccion seccion, Usuario usuario) {
-    
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProfesorListadoAlumnos(seccion: seccion, usuario: usuario,)),
+      MaterialPageRoute(builder: (context) => profesorFechas_page(seccion: seccion, usuario: usuario,)),
     );
   }
 
