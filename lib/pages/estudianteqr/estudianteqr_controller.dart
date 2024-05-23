@@ -4,23 +4,31 @@ import 'package:ulimagym/models/entities/Sesion.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class EstudianteQRController extends GetxController {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
   var qrText = ''.obs;
+  Completer<String> qrCompleter = Completer<String>();
 
-  void initController(QRViewController controller) {
-  this.controller = controller;
-  controller.scannedDataStream.listen((scanData) {
-    print('**********************************');//no llega nunca a este print respondemos? tas?
-    print('QR Code scanned: ${scanData.code}');
-    print('**********************************');
-    qrText.value = scanData.code ?? '';
-  });
-}
+  Future<void> initController(QRViewController controller) async {
+    this.controller = controller;
+    controller.scannedDataStream.listen((scanData) {
+      qrText.value = scanData.code ?? '';
+      print('Código QR escaneado: ${qrText.value}');
+      if (!qrCompleter.isCompleted) {
+        qrCompleter.complete(qrText.value);
+      }
+    });
+  }
 
-  Text getAsistencia(String sesion_id, Usuario usuario) {
+  Future<String> waitForQRCode() {
+    qrCompleter = Completer<String>(); // Reset the completer
+    return qrCompleter.future;
+  }
+
+  void getAsistencia(String sesion_id, Usuario usuario) {
 
     List<Asistencia> asistencia = Asistencia.lista
         .where((element) => 
@@ -29,15 +37,16 @@ class EstudianteQRController extends GetxController {
     print(asistencia);
     if (asistencia.isNotEmpty) {
       asistencia[0].asistio=true.obs;
-      return Text('Asistencia registrada');
-    }else{
-      return Text('No se ha encontrado tu usuarion en esta sesion');
     }
 
   }
 
   void pauseCamera() {
     controller?.pauseCamera();
+  }
+
+  void resumeCamera() {
+    controller?.resumeCamera();
   }
 
   @override

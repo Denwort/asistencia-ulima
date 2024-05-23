@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 
 class EstudianteQRPage extends StatelessWidget {
   final Usuario usuario;
-
   EstudianteQRPage({required this.usuario});
-  EstudianteQRController control = Get.put(EstudianteQRController());
+  final EstudianteQRController controller = Get.put(EstudianteQRController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,27 +20,36 @@ class EstudianteQRPage extends StatelessWidget {
             child: GetBuilder<EstudianteQRController>(
               builder: (controller) => QRView(
                 key: controller.qrKey,
-                onQRViewCreated: controller.initController,
+                onQRViewCreated: (controller) async {
+                  await this.controller.initController(controller);
+                  // Espera a que se escanee un código QR
+                  String qrCode = await this.controller.waitForQRCode();
+                  // Procesa el código QR escaneado
+                  print('Código QR procesado: $qrCode');
+                  this.controller.getAsistencia(qrCode, usuario);
+                },
+                overlay: QrScannerOverlayShape(
+                  borderColor: Colors.red,
+                  borderRadius: 10,
+                  borderLength: 30,
+                  borderWidth: 10,
+                  cutOutSize: 300,
+                ),
               ),
             ),
           ),
           Expanded(
             flex: 1,
             child: Center(
-              child: GetBuilder<EstudianteQRController>(
-                builder: (controller) {
-                  if (controller.qrText.value != null &&
-                      controller.qrText.value.isNotEmpty) {
-                    
-                    return controller.getAsistencia(
-                        controller.qrText.value, usuario);
-                  } else {
-                    return Text('Escanea un código QR');
-                  }
-                },
-              ),
+              child: Obx(() {
+                if (controller.qrText.value.isNotEmpty) {
+                  return Text('Código QR escaneado: ${controller.qrText.value}');
+                } else {
+                  return Text('Escanea un código QR');
+                }
+              }),
             ),
-          )
+          ),
         ],
       ),
     );
