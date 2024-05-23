@@ -59,13 +59,10 @@ class FechasAlumnoPageN extends StatelessWidget {
                             '${asistencia.session.fechaFin.day}/${asistencia.session.fechaFin.month}/${asistencia.session.fechaFin.year}',
                             style: TextStyle(fontSize: 16),
                           ),
-                          Checkbox(
+                          Obx(() => Checkbox(
                             value: asistencia.asistio.value,
-                            onChanged: (bool? nueva_asistencia) {
-                              
-                              // Acción cuando se cambia el valor del checkbox
-                            },
-                          ),
+                            onChanged: null ,
+                          ),),
             
                         ],
                       ),

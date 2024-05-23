@@ -31,7 +31,7 @@ class EstudianteQRPage extends StatelessWidget {
                 builder: (controller) {
                   if (controller.qrText.value != null &&
                       controller.qrText.value.isNotEmpty) {
-
+                    
                     return controller.getAsistencia(
                         controller.qrText.value, usuario);
                   } else {
@@ -45,5 +45,4 @@ class EstudianteQRPage extends StatelessWidget {
       ),
     );
   }
-
 }

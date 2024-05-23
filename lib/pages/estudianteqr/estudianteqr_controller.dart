@@ -11,11 +11,14 @@ class EstudianteQRController extends GetxController {
   var qrText = ''.obs;
 
   void initController(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      this.qrText.value = scanData.code ?? '';
-    });
-  }
+  this.controller = controller;
+  controller.scannedDataStream.listen((scanData) {
+    print('**********************************');//no llega nunca a este print respondemos? tas?
+    print('QR Code scanned: ${scanData.code}');
+    print('**********************************');
+    qrText.value = scanData.code ?? '';
+  });
+}
 
   Text getAsistencia(String sesion_id, Usuario usuario) {
 
