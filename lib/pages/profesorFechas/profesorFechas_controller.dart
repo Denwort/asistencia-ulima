@@ -7,14 +7,17 @@ import 'package:ulimagym/pages/listadoAlumnos/listadoAlumnos_page.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 
 class profesorFechas_controller extends GetxController {
-  List<Asistencia> getAsistencias(Seccion seccion) {
+  List<Sesion> getAsistencias(Seccion seccion, Usuario usuario) {
     List<Sesion> sesiones = Sesion.lista
         .where((element) => (element.seccion.id == seccion.id))
         .toList();
     List<Asistencia> asistencias = Asistencia.lista
-        .where((element) => (sesiones.contains(element.session)))
+        .where((element) =>
+            (sesiones.contains(element.session)) &&
+            (element.alumno.id == usuario.id))
         .toList();
-    return asistencias;
+    print(sesiones);
+    return sesiones;
   }
 
   void redireccionrAListadoAlumnos(BuildContext context, Seccion seccion, Usuario usuario) {

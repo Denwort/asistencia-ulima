@@ -7,7 +7,7 @@ class ProfesorQRController extends GetxController {
   Rx<String> qrData = ''.obs;
 
   void obtenerSeccionActual(){
-    qrData.value = 'xd';
+    qrData.value = '3'; //id de la sesion: ultima sesion de pepe movil
   }
 
   void generarQR(){

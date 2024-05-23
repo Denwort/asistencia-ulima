@@ -1,35 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ulimagym/models/entities/Usuario.dart';
-import 'estudianteqr_controller.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import './estudianteqr_controller.dart';
+import 'package:ulimagym/models/entities/Usuario.dart';
+import 'package:get/get.dart';
 
-class EstudianteQRPage extends StatefulWidget {
+class EstudianteQRPage extends StatelessWidget {
   final Usuario usuario;
+
   EstudianteQRPage({required this.usuario});
-  @override
-  State<StatefulWidget> createState() => EstudianteQR();
-}
-
-class EstudianteQR extends State<EstudianteQRPage> {
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? controller;
-  String? qrText;
-
-  @override
-  void reassemble() {
-    super.reassemble();
-    if (controller != null) {
-      controller!.pauseCamera();
-    }
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
-
+  EstudianteQRController control = Get.put(EstudianteQRController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,17 +17,28 @@ class EstudianteQR extends State<EstudianteQRPage> {
         children: <Widget>[
           Expanded(
             flex: 5,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
+            child: GetBuilder<EstudianteQRController>(
+              builder: (controller) => QRView(
+                key: controller.qrKey,
+                onQRViewCreated: controller.initController,
+              ),
             ),
           ),
           Expanded(
             flex: 1,
             child: Center(
-              child: (qrText != null)
-                  ? Text('Código QR: $qrText')
-                  : Text('Escanea un QR'),
+              child: GetBuilder<EstudianteQRController>(
+                builder: (controller) {
+                  if (controller.qrText.value != null &&
+                      controller.qrText.value.isNotEmpty) {
+
+                    return controller.getAsistencia(
+                        controller.qrText.value, usuario);
+                  } else {
+                    return Text('Escanea un código QR');
+                  }
+                },
+              ),
             ),
           )
         ],
@@ -56,12 +46,4 @@ class EstudianteQR extends State<EstudianteQRPage> {
     );
   }
 
-  void _onQRViewCreated(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        qrText = scanData.code;
-      });
-    });
-  }
 }

@@ -48,7 +48,7 @@ class profesorFechas_page extends StatelessWidget {
             Expanded(
               child: ListView(
                 padding: EdgeInsets.all(8.0),
-                children: control.getAsistencias(seccion).map((asistencia) {
+                children: control.getAsistencias(seccion,usuario).map((asistencia) {
                   return GestureDetector(
                     onTap: () {
                       control.redireccionrAListadoAlumnos(context,seccion,usuario);
@@ -63,7 +63,7 @@ class profesorFechas_page extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '${asistencia.session.fechaFin.day}/${asistencia.session.fechaFin.month}/${asistencia.session.fechaFin.year}',
+                                  '${asistencia.fechaFin.day}/${asistencia.fechaFin.month}/${asistencia.fechaFin.year}',
                                   style: TextStyle(fontSize: 16),
                                 ),
                               ],
