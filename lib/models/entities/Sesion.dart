@@ -52,8 +52,8 @@ class Sesion {
       // Movil
       Sesion(
         id: 0,
-        fechaInicio: DateTime(2024, 05, 21, 7),
-        fechaFin: DateTime(2024, 05, 21, 9),
+        fechaInicio: DateTime(2024, 05, 23, 7),
+        fechaFin: DateTime(2024, 05, 23, 9),
         seccion: Seccion.lista[0],
       ),
       Sesion(

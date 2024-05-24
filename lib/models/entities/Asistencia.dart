@@ -56,7 +56,7 @@ class Asistencia {
       //  Movil
       Asistencia(
         id: 0,
-        asistio: true.obs,
+        asistio: false.obs,
         alumno: Usuario.lista[2],
         session: Sesion.lista[0],
       ),

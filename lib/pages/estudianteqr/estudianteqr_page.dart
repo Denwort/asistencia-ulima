@@ -43,7 +43,7 @@ class EstudianteQRPage extends StatelessWidget {
             child: Center(
               child: Obx(() {
                 if (controller.qrText.value.isNotEmpty) {
-                  return Text('Código QR escaneado: ${controller.qrText.value}');
+                  return Text(controller.texto.value, textAlign: TextAlign.center,);
                 } else {
                   return Text('Escanea un código QR');
                 }

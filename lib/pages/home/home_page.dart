@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.list_outlined),
-          label: 'Estudiante-Cursos',
+          label: 'Cursos',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.qr_code_scanner),
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Estudiante-Perfil',
+          label: 'Perfil',
         ),
       ],
       currentIndex: _selectedIndex,
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.list_outlined),
-          label: 'Profesor-Cursos',
+          label: 'Secciones',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.qr_code),
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Profesor-Perfil',
+          label: 'Perfil',
         ),
       ],
       currentIndex: _selectedIndex,

@@ -10,10 +10,12 @@ class EstudianteQRController extends GetxController {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
   var qrText = ''.obs;
+  var texto = ''.obs;
   Completer<String> qrCompleter = Completer<String>();
 
   Future<void> initController(QRViewController controller) async {
     this.controller = controller;
+    qrText.value = '';
     controller.scannedDataStream.listen((scanData) {
       qrText.value = scanData.code ?? '';
       print('Código QR escaneado: ${qrText.value}');
@@ -37,8 +39,11 @@ class EstudianteQRController extends GetxController {
     print(asistencia);
     if (asistencia.isNotEmpty) {
       asistencia[0].asistio=true.obs;
+      texto.value = 'Has marcado tu asistencia de '+ asistencia[0].session.seccion.curso + 
+      ' para el dia ' + asistencia[0].session.fechaInicio.day.toString()+
+      '-' +  asistencia[0].session.fechaInicio.month.toString()+
+      '-' + asistencia[0].session.fechaInicio.year.toString();
     }
-
   }
 
   void pauseCamera() {

@@ -13,7 +13,7 @@ class AcercadePage extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/logo.png'), // Aquí puedes colocar tu logo
+              backgroundImage: AssetImage('assets/images/logo.png'), // Aquí puedes colocar tu logo
             ),
             SizedBox(height: 20),
             Text(
