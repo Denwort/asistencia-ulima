@@ -29,7 +29,7 @@ class Asistencia {
       : id = 0,
         asistio = false.obs,
         alumno = Usuario.empty(),
-        session = Sesion.empty();
+        session = Sesion.empty(); 
 
     factory Asistencia.fromJson(Map<String, dynamic> json) => Asistencia(
         id: json["id"],

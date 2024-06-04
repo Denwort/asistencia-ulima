@@ -1,34 +1,48 @@
 import 'dart:convert';
 
-Periodo periodoFromJson(String str) => Periodo.fromJson(json.decode(str));
+import 'package:ulimagym/models/entities/Carrera.dart';
+import 'package:ulimagym/models/entities/Nivel.dart';
 
-String periodoToJson(Periodo data) => json.encode(data.toJson());
+Curso cursoFromJson(String str) => Curso.fromJson(json.decode(str));
 
-class Periodo {
+String cursoToJson(Curso data) => json.encode(data.toJson());
+
+class Curso {
   int id;
   String nombre;
-  int carreraId;
-  int nivelId;
+  String color;
+  Carrera carreraId;
+  Nivel nivelId;
 
-  Periodo({
+  Curso({
     required this.id,
     required this.nombre,
+    required this.color,
     required this.carreraId,
     required this.nivelId,
   });
 
-  factory Periodo.fromJson(Map<String, dynamic> json) => Periodo(
+  Curso.empty()
+      : id = 0,
+        nombre = '',
+        color = '',
+        carreraId = Carrera.empty(),
+        nivelId = Nivel.empty();
+
+
+  factory Curso.fromJson(Map<String, dynamic> json) => Curso(
         id: json["id"],
         nombre: json["nombre"],
-        carreraId: json["carrera_id"],
-        nivelId: json["nivel_id"],
+        color: json["color"],
+        carreraId: Carrera.fromJson(json["carrera_id"]),
+        nivelId: Nivel.fromJson(json["nivel_id"]),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "nombre": nombre,
-        "carrera_id": carreraId,
-        "nivel_id": nivelId,
+        "carrera_id": carreraId.toJson(),
+        "nivel_id": nivelId.toJson(),
       };
   @override
   String toString() {

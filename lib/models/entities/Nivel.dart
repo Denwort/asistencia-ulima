@@ -8,6 +8,10 @@ class Nivel {
   int id;
   int nombre;
 
+  Nivel.empty()
+      : id = 0,
+        nombre = '';
+
   Nivel({
     required this.id,
     required this.nombre,

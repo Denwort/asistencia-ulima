@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:ulimagym/models/entities/Usuario.dart';
+import 'package:ulimagym/models/entities/Curso.dart';
+import 'package:ulimagym/models/entities/Periodo.dart';
 
 Seccion seccionFromJson(String str) => Seccion.fromJson(json.decode(str));
 
@@ -9,43 +11,44 @@ String seccionToJson(Seccion data) => json.encode(data.toJson());
 class Seccion {
   int id;
   String codigo;
-  String periodo;
-  String curso;
-  Usuario profesor;
-
-  Seccion.empty()
-      : id = 0,
-        codigo = '',
-        periodo = '',
-        curso = '',
-        profesor = Usuario.empty();
+  Periodo periodo;
+  Curso curso;
+  Usuario usuario;
 
   Seccion({
     required this.id,
     required this.codigo,
     required this.periodo,
     required this.curso,
-    required this.profesor,
+    required this.usuario,
   });
+
+  Seccion.empty()
+      : id = 0,
+        codigo = '',
+        periodo = Periodo.empty(),
+        curso = Curso.empty(),
+        usuario = Usuario.empty();
 
   factory Seccion.fromJson(Map<String, dynamic> json) => Seccion(
         id: json["id"],
         codigo: json["codigo"],
-        periodo: json["periodo"],
-        curso: json["curso"],
-        profesor: Usuario.fromJson(json["usuario"]),
+        periodo: Periodo.fromJson(json["periodo"]),
+        curso: Curso.fromJson(json["curso"]),
+        usuario: Usuario.fromJson(json["usuario"]),
       );
 
+// cambie el nombre de profesor a usuario
   Map<String, dynamic> toJson() => {
         "id": id,
         "codigo": codigo,
-        "periodo": periodo,
-        "curso": curso,
-        "profesor": profesor.toJson(),
+        "periodo": periodo.toJson(),
+        "curso": curso.toJson(),
+        "usuario": usuario.toJson(),
       };
   @override
   String toString() {
-    return 'Seccion -> id: ${id}, codigo: ${this.codigo}, periodo: ${this.periodo}, curso: ${this.curso}, profesor: ${this.profesor}';
+    return 'Seccion -> id: ${id}, codigo: ${this.codigo}, periodo: ${this.periodo}, curso: ${this.curso}, usuario: ${this.usuario}';
   }
 
   static List<Seccion> lista = [
@@ -55,21 +58,21 @@ class Seccion {
       codigo: '830',
       periodo: '2024-1',
       curso: 'Programacion movil',
-      profesor: Usuario.lista[0],
+      usuario: Usuario.lista[0],
     ),
     Seccion(
       id: 1,
       codigo: '833',
       periodo: '2024-1',
       curso: 'Taller de propuesta de investigacion',
-      profesor: Usuario.lista[0],
+      usuario: Usuario.lista[0],
     ),
     Seccion(
       id: 2,
       codigo: '831',
       periodo: '2024-1',
       curso: 'Ingenieria de software 2',
-      profesor: Usuario.lista[1],
+      usuario: Usuario.lista[1],
     )
   ];
 }

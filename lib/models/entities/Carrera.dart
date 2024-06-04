@@ -8,6 +8,10 @@ class Carrera {
   int id;
   String nombre;
 
+  Carrera.empty()
+      : id = 0,
+        nombre = '';
+
   Carrera({
     required this.id,
     required this.nombre,
