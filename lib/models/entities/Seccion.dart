@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:ulimagym/models/entities/Carrera.dart';
+import 'package:ulimagym/models/entities/Nivel.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'package:ulimagym/models/entities/Curso.dart';
 import 'package:ulimagym/models/entities/Periodo.dart';
@@ -56,22 +58,49 @@ class Seccion {
     Seccion(
       id: 0,
       codigo: '830',
-      periodo: '2024-1',
-      curso: 'Programacion movil',
+      periodo: Periodo( // Asegúrate de crear el constructor adecuado para Periodo
+        id: 1,
+        nombre: '2024-1',
+      ),
+      curso: Curso( // Asegúrate de crear el constructor adecuado para Curso
+        id: 1,
+        nombre: 'Programacion movil',
+        color: 'blue',
+        carreraId : Carrera(id: 1, nombre: "Ingeniería de sistemas"),
+        nivelId: Nivel(id:8, nombre:"8"),
+      ),
       profesor: Usuario.lista[0],
     ),
     Seccion(
       id: 1,
       codigo: '833',
-      periodo: '2024-1',
-      curso: 'Taller de propuesta de investigacion',
+      periodo: Periodo( // Asegúrate de crear el constructor adecuado para Periodo
+        id: 1,
+        nombre: '2024-1',
+      ),
+      curso: Curso( // Asegúrate de crear el constructor adecuado para Curso
+        id: 2,
+        nombre: 'Taller de propuesta de investigacion',
+        color: 'red',
+        carreraId : Carrera(id: 1, nombre: "Ingeniería de sistemas"),
+        nivelId: Nivel(id:8, nombre:"8"),
+      ),
       profesor: Usuario.lista[0],
     ),
     Seccion(
       id: 2,
       codigo: '831',
-      periodo: '2024-1',
-      curso: 'Ingenieria de software 2',
+      periodo: Periodo( // Asegúrate de crear el constructor adecuado para Periodo
+        id: 1,
+        nombre: '2024-1',
+      ),
+      curso: Curso( // Asegúrate de crear el constructor adecuado para Curso
+        id: 2,
+        nombre: 'Ingeniería de software 2',
+        color: 'green',
+        carreraId : Carrera(id: 1, nombre: "Ingeniería de sistemas"),
+        nivelId: Nivel(id:8, nombre:"8"),
+      ),
       profesor: Usuario.lista[1],
     )
   ];

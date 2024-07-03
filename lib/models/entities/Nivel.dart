@@ -6,7 +6,7 @@ String nivelToJson(Nivel data) => json.encode(data.toJson());
 
 class Nivel {
   int id;
-  int nombre;
+  String nombre;
 
   Nivel.empty()
       : id = 0,

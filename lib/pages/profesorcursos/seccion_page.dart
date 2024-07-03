@@ -66,7 +66,7 @@ class ProfesorCursosPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        secciones[i].curso,
+                        secciones[i].curso.nombre,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,

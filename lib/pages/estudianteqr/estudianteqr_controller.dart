@@ -39,7 +39,7 @@ class EstudianteQRController extends GetxController {
     print(asistencia);
     if (asistencia.isNotEmpty) {
       asistencia[0].asistio=true.obs;
-      texto.value = 'Has marcado tu asistencia de '+ asistencia[0].session.seccion.curso + 
+      texto.value = 'Has marcado tu asistencia de '+ asistencia[0].session.seccion.curso.nombre + 
       ' para el dia ' + asistencia[0].session.fechaInicio.day.toString()+
       '-' +  asistencia[0].session.fechaInicio.month.toString()+
       '-' + asistencia[0].session.fechaInicio.year.toString();

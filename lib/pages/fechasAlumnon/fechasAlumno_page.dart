@@ -40,7 +40,7 @@ class FechasAlumnoPageN extends StatelessWidget {
                 ),
                 Spacer(),
                 Text(
-                  seccion.curso,
+                  seccion.curso.nombre,
                   style: TextStyle(fontSize: 16),
                 ),
               ],
