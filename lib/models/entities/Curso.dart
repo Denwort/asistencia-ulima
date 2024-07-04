@@ -1,3 +1,4 @@
+// lib/models/entities/Curso.dart
 import 'dart:convert';
 
 import 'package:ulimagym/models/entities/Carrera.dart';
