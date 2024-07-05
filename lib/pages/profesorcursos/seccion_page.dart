@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulimagym/models/entities/CursoProfe.dart';
 import 'package:ulimagym/models/entities/Seccion.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'seccion_controller.dart';
@@ -7,107 +8,112 @@ import 'seccion_controller.dart';
 class ProfesorCursosPage extends StatelessWidget {
   final Usuario usuario;
   ProfesorCursosPage({required this.usuario});
-  ProfesorCursosController control = Get.put(ProfesorCursosController());
 
-  Widget _buildBody(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.start, // Alinear el texto a la izquierda
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 30, top: 25), // Espaciado izquierdo y debajo del texto
-              child: Text(
-                'Todos los cursos',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
+  @override
+  Widget build(BuildContext context) {
+    final ProfesorCursosController control = Get.put(ProfesorCursosController(usuario));
+
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: null,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 30, top: 25),
+                child: Text(
+                  'Todos los cursos',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 20), // Espacio entre el texto y los cuadrados
-            Column(
-              crossAxisAlignment: CrossAxisAlignment
-                  .center, // Centrar los cuadrados horizontalmente
-              children: generarCursos(context, control.getSecciones(usuario)),
-            ),
-          ],
+              SizedBox(height: 20),
+              _buildCursosList(context),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  List<Widget> generarCursos(BuildContext context, List<Seccion> secciones) {
-    List<Widget> cursos = [];
+  Widget _buildCursosList(BuildContext context) {
+    final ProfesorCursosController control = Get.find<ProfesorCursosController>();
 
-    for (int i = 0; i < secciones.length; i++) {
-      cursos.add(
-        Column(
-          children: [
-            InkWell(
-              onTap: () {
-                control.redireccionrAFechas(context, secciones[i], usuario);
-              },
-              child: Container(
-                width: 330,
-                height: 90,
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(244, 161, 231, 222),
-                  borderRadius: BorderRadius.circular(35),
-                ),
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 22),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        secciones[i].curso.nombre,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      SizedBox(height: 3),
-                      Text(
-                        'Sección: ${secciones[i].codigo}',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
+    return Obx(() {
+      if (control.isLoading.value) {
+        return Center(child: CircularProgressIndicator());
+      } else {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: _generarCursos(context, control.cursos.toList()),
+        );
+      }
+    });
+  }
+
+  List<Widget> _generarCursos(BuildContext context, List<CursoProfe> cursos) {
+    List<Widget> cursosWidgets = [];
+
+    for (var curso in cursos) {
+      cursosWidgets.add(
+        InkWell(
+          onTap: () {
+            /*
+            control.redireccionrAFechas(context, curso.seccion, usuario);
+            */
+          },
+          child: Container(
+            width: 330,
+            height: 90,
+            decoration: BoxDecoration(
+              color: Color(int.parse(curso.color)),
+              borderRadius: BorderRadius.circular(35),
+            ),
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 22),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    curso.cursoNombre,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
-                ),
+                  SizedBox(height: 3),
+                  Text(
+                    'Sección: ${curso.seccionCodigo}',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
               ),
             ),
-            if (i < secciones.length - 1)
-              Divider(
-                height: 20,
-                thickness: 1,
-                color: Colors.grey,
-                indent: 50,
-                endIndent: 50,
-              ),
-          ],
+          ),
+        ),
+      );
+
+      cursosWidgets.add(
+        Divider(
+          height: 20,
+          thickness: 1,
+          color: Colors.grey,
+          indent: 50,
+          endIndent: 50,
         ),
       );
     }
 
-    return cursos;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: null,
-      body: _buildBody(context),
-    ));
+    return cursosWidgets;
   }
 }

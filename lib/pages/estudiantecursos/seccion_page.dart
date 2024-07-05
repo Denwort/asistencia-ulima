@@ -14,7 +14,6 @@ class EstudianteCursosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EstudianteCursosController control = Get.put(EstudianteCursosController(usuario));
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: null,

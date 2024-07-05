@@ -55,13 +55,14 @@ class Usuario {
   static List<Usuario> lista = [
     // Lista de usuarios. 1 pepe, 1 nina, 1 mateo y 1 cliff.
     Usuario(
-      id: 0,
+      id: 1,
       usuario: 'profesor',
       contrasenia: '',
       rol: 'profesor',
       nombres: 'Pepe',
       apellidos: 'Valdivia',
     ),
+    // ESTE USUARIO SI HACE MATCH CON EL DE LA BASE DE DATOS
     Usuario(
       id: 1,
       usuario: 'profesor2',
@@ -70,6 +71,7 @@ class Usuario {
       nombres: 'Hernan',
       apellidos: 'Nina',
     ),
+    // ESTE USUARIO SI HACE MATCH CON EL DE LA BASE DE DATOS
     Usuario(
       id: 3,
       usuario: 'usuario',
