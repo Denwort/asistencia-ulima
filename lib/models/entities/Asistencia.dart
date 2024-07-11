@@ -34,7 +34,7 @@ class Asistencia {
     factory Asistencia.fromJson(Map<String, dynamic> json) => Asistencia(
         id: json["id"],
         asistio: RxBool(json["asistio"]),
-        alumno: Usuario.fromJson(json["usuario"]),
+        alumno: Usuario.fromJson(json["alumno"]),
         sesion: Sesion.fromJson(json["sesion"]),
     );
 

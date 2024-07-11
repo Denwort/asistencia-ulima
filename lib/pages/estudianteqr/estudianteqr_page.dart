@@ -42,11 +42,15 @@ class EstudianteQRPage extends StatelessWidget {
             flex: 1,
             child: Center(
               child: Obx(() {
-                if (controller.qrText.value.isNotEmpty) {
-                  return Text(controller.texto.value, textAlign: TextAlign.center,);
-                } else {
-                  return Text('Escanea un código QR');
-                }
+                return Container(
+                  width: 300, // Puedes ajustar este valor para limitar el ancho del texto
+                  child: Center(
+                    child: Text(
+                      controller.qrText.value.isNotEmpty ? controller.texto.value : 'Escanea un código QR',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
               }),
             ),
           ),

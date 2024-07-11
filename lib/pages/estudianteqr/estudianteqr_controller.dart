@@ -44,10 +44,12 @@ class EstudianteQRController extends GetxController {
 
     Asistencia? asistencia = await qrservice.obtenerQRAsistenciaAlumno(sesion_id_int, usuario.id);
 
-    texto.value = 'Has marcado tu asistencia correctamente'; //+ asistencia[0].session.seccion_id.toString() + 
-      //' para el dia ' + asistencia[0].session.fechaInicio.day.toString()+
-      //'-' +  asistencia[0].session.fechaInicio.month.toString()+
-      //'-' + asistencia[0].session.fechaInicio.year.toString();
+    print(asistencia);
+
+    texto.value = 'Has marcado tu asistencia correctamente' + //asistencia[0].session.seccion_id.toString() + 
+      ' para el dia ' + asistencia.sesion.fechaInicio.day.toString()+
+      '-' +  asistencia.sesion.fechaInicio.month.toString()+
+      '-' + asistencia.sesion.fechaInicio.year.toString();
   }
 
   void pauseCamera() {
