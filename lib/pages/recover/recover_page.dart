@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulimagym/pages/login/login_page.dart';
 import 'recover_controller.dart';
 
 class RecoverPage extends StatelessWidget {
@@ -43,7 +42,7 @@ class RecoverPage extends StatelessWidget {
   Widget _form(BuildContext context, bool isKeyboardOpen) {
     return Container(
       padding: EdgeInsets.all(24.0),
-      margin: EdgeInsets.fromLTRB(0.0, 0.0 , 0.0 , isKeyboardOpen ? 200.0 : 0.0),
+      margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, isKeyboardOpen ? 200.0 : 0.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.0),
@@ -72,7 +71,7 @@ class RecoverPage extends StatelessWidget {
           TextFormField(
             style: TextStyle(fontSize: 16),
             decoration: InputDecoration(
-              labelText: 'DNI',
+              labelText: 'Usuario',
               labelStyle: TextStyle(color: Colors.black),
               prefixIcon: Icon(Icons.person),
               border: OutlineInputBorder(
@@ -83,31 +82,14 @@ class RecoverPage extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.black),
               ),
             ),
-            controller: control.dniController,
-          ),
-          SizedBox(height: 6),
-          TextFormField(
-            style: TextStyle(fontSize: 16),
-            decoration: InputDecoration(
-              labelText: 'Correo',
-              labelStyle: TextStyle(color: Colors.black),
-              prefixIcon: Icon(Icons.email),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.zero,
-              ),
-              contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-            ),
-            controller: control.emailController,
+            controller: control.usernameController,
           ),
           SizedBox(height: 20),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                control.resetPassword();
+                control.resetPassword(context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFF26F29),

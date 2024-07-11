@@ -11,6 +11,7 @@ class Usuario {
   String rol;
   String nombres;
   String apellidos;
+  String correo;
 
   Usuario.empty()
       : id = 0,
@@ -18,7 +19,8 @@ class Usuario {
         contrasenia = '',
         rol = '',
         nombres = '',
-        apellidos = '';
+        apellidos = '',
+        correo = '';
 
   Usuario({
     required this.id,
@@ -27,6 +29,7 @@ class Usuario {
     required this.rol,
     required this.nombres,
     required this.apellidos,
+    required this.correo,
   });
 
   factory Usuario.fromJson(Map<String, dynamic> json) => Usuario(
@@ -36,6 +39,7 @@ class Usuario {
         rol: json["rol"],
         nombres: json["nombres"],
         apellidos: json["apellidos"],
+        correo: json["correo"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -45,11 +49,12 @@ class Usuario {
         "rol": rol,
         "nombres": nombres,
         "apellidos": apellidos,
+        "correo": correo,
       };
 
   @override
   String toString() {
-    return 'Usuario -> id: ${id}, usuario: ${this.usuario}, contrasenia: ${this.contrasenia}, rol: ${this.rol}, nombres: ${this.nombres}, apellidos: ${this.apellidos}';
+    return 'Usuario -> id: ${id}, usuario: ${this.usuario}, contrasenia: ${this.contrasenia}, rol: ${this.rol}, nombres: ${this.nombres}, apellidos: ${this.apellidos}, correo: ${this.correo}';
   }
 
   static List<Usuario> lista = [
@@ -61,6 +66,7 @@ class Usuario {
       rol: 'profesor',
       nombres: 'Pepe',
       apellidos: 'Valdivia',
+      correo: "pepe@gmail.com",
     ),
     // ESTE USUARIO SI HACE MATCH CON EL DE LA BASE DE DATOS
     Usuario(
@@ -70,6 +76,7 @@ class Usuario {
       rol: 'profesor',
       nombres: 'Hernan',
       apellidos: 'Nina',
+      correo: "nina@gmail.com",
     ),
     // ESTE USUARIO SI HACE MATCH CON EL DE LA BASE DE DATOS
     Usuario(
@@ -79,6 +86,7 @@ class Usuario {
       rol: 'alumno',
       nombres: 'mateo',
       apellidos: 'alvarez',
+      correo: "20212407@aloe.ulima.edu.pe",
     ),
     Usuario(
       id: 1,
@@ -87,6 +95,7 @@ class Usuario {
       rol: 'alumno',
       nombres: 'cliff',
       apellidos: 'de la cruz',
+      correo: "cliff@gmail.com",
     ),
   ];
 }
