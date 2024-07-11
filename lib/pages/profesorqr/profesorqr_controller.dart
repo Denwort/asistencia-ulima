@@ -1,17 +1,18 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:ulimagym/models/entities/Sesion.dart';
+import 'package:ulimagym/services/qr_service.dart';
 
 class ProfesorQRController extends GetxController {
 
   Rx<bool> mostrar = false.obs;
   Rx<String> qrData = ''.obs;
 
-  void obtenerSeccionActual(){
-    qrData.value = '0'; //id de la sesion: ultima sesion de pepe movil
-  }
+  QRService qrservice = new QRService();
 
-  void generarQR(){
-    obtenerSeccionActual();
+  void generarQR(int usuario_id) async {
+    Sesion? sesion = await qrservice.obtenerQRSesionProfesor(usuario_id);
+    qrData.value = sesion.id.toString();
     mostrar.value = true;
   }
 
@@ -19,8 +20,8 @@ class ProfesorQRController extends GetxController {
     mostrar.value = false;
   }
 
-  void aceptarPopup(BuildContext context){
-    generarQR();
+  void aceptarPopup(BuildContext context, int usuario_id){
+    generarQR(usuario_id);
     Navigator.of(context).pop();
   }
 

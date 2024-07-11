@@ -6,19 +6,22 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:ulimagym/services/qr_service.dart';
+
 class EstudianteQRController extends GetxController {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
   var qrText = ''.obs;
   var texto = ''.obs;
   Completer<String> qrCompleter = Completer<String>();
+  QRService qrservice = new QRService();
 
   Future<void> initController(QRViewController controller) async {
     this.controller = controller;
     qrText.value = '';
     controller.scannedDataStream.listen((scanData) {
       qrText.value = scanData.code ?? '';
-      print('Código QR escaneado: ${qrText.value}');
+      print('QR escaneado: ${qrText.value}');
       if (!qrCompleter.isCompleted) {
         qrCompleter.complete(qrText.value);
       }
@@ -30,20 +33,21 @@ class EstudianteQRController extends GetxController {
     return qrCompleter.future;
   }
 
-  void getAsistencia(String sesion_id, Usuario usuario) {
+  void getAsistencia(String sesion_id, Usuario usuario) async {
 
-    List<Asistencia> asistencia = Asistencia.lista
-        .where((element) => 
-            (element.session.id == int.parse(sesion_id)) && (element.alumno.id == usuario.id))
-        .toList();
-    print(asistencia);
-    if (asistencia.isNotEmpty) {
-      asistencia[0].asistio=true.obs;
-      texto.value = 'Has marcado tu asistencia de '+ asistencia[0].session.seccion.curso.nombre + 
-      ' para el dia ' + asistencia[0].session.fechaInicio.day.toString()+
-      '-' +  asistencia[0].session.fechaInicio.month.toString()+
-      '-' + asistencia[0].session.fechaInicio.year.toString();
+    int? sesion_id_int = int.tryParse(sesion_id);
+    
+    if(sesion_id_int == null){
+      texto.value = 'QR invalido';
+      return;
     }
+
+    Asistencia? asistencia = await qrservice.obtenerQRAsistenciaAlumno(sesion_id_int, usuario.id);
+
+    texto.value = 'Has marcado tu asistencia correctamente'; //+ asistencia[0].session.seccion_id.toString() + 
+      //' para el dia ' + asistencia[0].session.fechaInicio.day.toString()+
+      //'-' +  asistencia[0].session.fechaInicio.month.toString()+
+      //'-' + asistencia[0].session.fechaInicio.year.toString();
   }
 
   void pauseCamera() {

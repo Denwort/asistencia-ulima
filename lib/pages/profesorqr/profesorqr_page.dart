@@ -89,7 +89,7 @@ Widget _qrImagen() {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                control.aceptarPopup(context);
+                control.aceptarPopup(context, usuario.id);
               },
               child: Text('Continuar', style: TextStyle(color: Colors.orange),),
             ),

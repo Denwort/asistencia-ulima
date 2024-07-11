@@ -56,7 +56,7 @@ class FechasAlumnoPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${asistencia.session.fechaFin.day}/${asistencia.session.fechaFin.month}/${asistencia.session.fechaFin.year}',
+                            '${asistencia.sesion.fechaFin.day}/${asistencia.sesion.fechaFin.month}/${asistencia.sesion.fechaFin.year}',
                             style: TextStyle(fontSize: 16),
                           ),
                           Obx(() => Checkbox(

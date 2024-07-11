@@ -64,7 +64,7 @@ class Usuario {
     ),
     // ESTE USUARIO SI HACE MATCH CON EL DE LA BASE DE DATOS
     Usuario(
-      id: 1,
+      id: 2,
       usuario: 'profesor2',
       contrasenia: '',
       rol: 'profesor',
@@ -81,7 +81,7 @@ class Usuario {
       apellidos: 'alvarez',
     ),
     Usuario(
-      id: 1,
+      id: 4,
       usuario: 'usuario3',
       contrasenia: '',
       rol: 'alumno',

@@ -16,37 +16,37 @@ class Asistencia {
     int id;
     RxBool asistio;
     Usuario alumno;
-    Sesion session;
+    Sesion sesion;
 
     Asistencia({
         required this.id,
         required this.asistio,
         required this.alumno,
-        required this.session,
+        required this.sesion,
     });
 
     Asistencia.empty()
       : id = 0,
         asistio = false.obs,
         alumno = Usuario.empty(),
-        session = Sesion.empty(); 
+        sesion = Sesion.empty(); 
 
     factory Asistencia.fromJson(Map<String, dynamic> json) => Asistencia(
         id: json["id"],
-        asistio: json["asistio"],
+        asistio: RxBool(json["asistio"]),
         alumno: Usuario.fromJson(json["usuario"]),
-        session: Sesion.fromJson(json["sesion"]),
+        sesion: Sesion.fromJson(json["sesion"]),
     );
 
     Map<String, dynamic> toJson() => {
         "id": id,
         "asistio": asistio,
         "alumno": alumno.toJson(),
-        "session": session.toJson(),
+        "sesion": sesion.toJson(),
     };
     @override
     String toString() {
-      return 'Asistencia -> id: ${id}, asistio: ${this.asistio}, alumno: ${this.alumno}, session: ${this.session}';
+      return 'Asistencia -> id: ${id}, asistio: ${this.asistio}, alumno: ${this.alumno}, sesion: ${this.sesion}';
     }
 
     static List<Asistencia> lista = [
@@ -58,57 +58,57 @@ class Asistencia {
         id: 0,
         asistio: false.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[0],
+        sesion: Sesion.lista[0],
       ),
       Asistencia(
         id: 1,
         asistio: false.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[1],
+        sesion: Sesion.lista[1],
       ),
       Asistencia(
         id: 2,
         asistio: true.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[2],
+        sesion: Sesion.lista[2],
       ),
       Asistencia(
         id: 3,
         asistio: true.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[3],
+        sesion: Sesion.lista[3],
       ),
       //  TPI
       Asistencia(
         id: 4,
         asistio: false.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[4],
+        sesion: Sesion.lista[4],
       ),
       Asistencia(
         id: 5,
         asistio: true.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[5],
+        sesion: Sesion.lista[5],
       ),
       //  SW2
       Asistencia(
         id: 6,
         asistio: true.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[6],
+        sesion: Sesion.lista[6],
       ),
       Asistencia(
         id: 7,
         asistio: false.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[7],
+        sesion: Sesion.lista[7],
       ),
       Asistencia(
         id: 8,
         asistio: true.obs,
         alumno: Usuario.lista[2],
-        session: Sesion.lista[8],
+        sesion: Sesion.lista[8],
       ),
       // Cliff
       //  Movil
@@ -116,38 +116,38 @@ class Asistencia {
         id: 9,
         asistio: true.obs,
         alumno: Usuario.lista[3],
-        session: Sesion.lista[0],
+        sesion: Sesion.lista[0],
       ),
       Asistencia(
         id: 10,
         asistio: true.obs,
         alumno: Usuario.lista[3],
-        session: Sesion.lista[1],
+        sesion: Sesion.lista[1],
       ),
       Asistencia(
         id: 11,
         asistio: false.obs,
         alumno: Usuario.lista[3],
-        session: Sesion.lista[2],
+        sesion: Sesion.lista[2],
       ),
       Asistencia(
         id: 12,
         asistio: true.obs,
         alumno: Usuario.lista[3],
-        session: Sesion.lista[3],
+        sesion: Sesion.lista[3],
       ),
       //  TPI
       Asistencia(
         id: 13,
         asistio: true.obs,
         alumno: Usuario.lista[3],
-        session: Sesion.lista[4],
+        sesion: Sesion.lista[4],
       ),
       Asistencia(
         id: 14,
         asistio: false.obs,
         alumno: Usuario.lista[3],
-        session: Sesion.lista[5],
+        sesion: Sesion.lista[5],
       ),
       
     ];
