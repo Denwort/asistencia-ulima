@@ -64,9 +64,7 @@ class EstudianteCursosPage extends StatelessWidget {
       cursosWidgets.add(
         InkWell(
           onTap: () {
-            /*
-            Get.find<EstudianteCursosController>().redireccionarAFechas(context, curso.seccion, usuario);
-            */
+            Get.find<EstudianteCursosController>().redireccionarAFechas(context, curso.seccId, usuario.id);
           },
           child: Container(
             width: 330,

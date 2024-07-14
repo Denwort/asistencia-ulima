@@ -1,91 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulimagym/models/entities/Asistencia.dart';
-import 'package:ulimagym/models/entities/Seccion.dart';
-import 'package:ulimagym/models/entities/Usuario.dart';
 import 'fechasAlumno_controller.dart';
 
 class FechasAlumnoPageN extends StatelessWidget {
-  final Seccion seccion;
-  final Usuario usuario;
-  FechasAlumnoPageN({required this.seccion, required this.usuario});
+  final int seccionId;
+  final int usuarioId;
 
-  FechasAlumnoControllerN control = Get.put(FechasAlumnoControllerN());
+  FechasAlumnoPageN({required this.seccionId, required this.usuarioId});
 
-  DateTime startDate = DateTime(2024, 4, 1);
-  int weeksCount = 16;
+  late FechasAlumnoControllerN control;
 
-  List<DateTime> getDateList(seccion) {
-    List<DateTime> dateList = [];
-    for (int i = 0; i < weeksCount * 7; i++) {
-      dateList.add(startDate.add(Duration(days: i)));
-    }
-    return dateList;
-  }
+  @override
+  Widget build(BuildContext context) {
+    control = Get.put(FechasAlumnoControllerN(usuarioId: usuarioId, seccionId: seccionId));
 
-  Widget _buildBody(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(16.0), // Más relleno alrededor de todo el widget
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: Text('Sesiones', style: TextStyle(fontSize: 16)),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
               children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                Spacer(),
-                Text(
-                  seccion.curso.nombre,
-                  style: TextStyle(fontSize: 16),
+                Expanded(
+                  child: Obx(() {
+                    if (control.isLoading.value) {
+                      return Center(child: CircularProgressIndicator());
+                    } else if (control.sesiones.isEmpty) {
+                      return Center(child: Text("No hay sesiones disponibles."));
+                    } else {
+                      return ListView.builder(
+                        padding: EdgeInsets.all(8.0),
+                        itemCount: control.sesiones.length,
+                        itemBuilder: (context, index) {
+                          final sesion = control.sesiones[index];
+                          return Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '${sesion.fechaFin.split("T")[0]}', // Formato de fecha
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  Checkbox(
+                                    value: sesion.asistio == 1,
+                                    onChanged: null, // Solo lectura
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }
+                  }),
                 ),
               ],
             ),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.all(8.0),
-                children: control.getAsistencias(seccion, usuario).map((asistencia) {
-                  return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${asistencia.sesion.fechaFin.day}/${asistencia.sesion.fechaFin.month}/${asistencia.sesion.fechaFin.year}',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Obx(() => Checkbox(
-                            value: asistencia.asistio.value,
-                            onChanged: null ,
-                          ),),
-            
-                        ],
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: null,
-        body: _buildBody(context),
-      ),
-    );
-  }
-  
 }

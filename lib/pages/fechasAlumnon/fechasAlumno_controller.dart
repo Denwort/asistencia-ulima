@@ -1,24 +1,34 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulimagym/models/entities/Asistencia.dart';
-import 'package:ulimagym/models/entities/Seccion.dart';
-import 'package:ulimagym/models/entities/Sesion.dart';
-import 'package:ulimagym/models/entities/Usuario.dart';
+import 'package:ulimagym/models/entities/SesionAlum.dart';
+import '../../services/AsistenciasAlumno_service.dart';
 
 class FechasAlumnoControllerN extends GetxController {
-  List<Asistencia> getAsistencias(Seccion seccion, Usuario usuario) {
+  final int usuarioId;
+  final int seccionId;
+  final AsistenciasAlumnoService asistenciasService = AsistenciasAlumnoService(); // Instancia del servicio
 
-    List<Sesion> sesiones = Sesion.lista
-        .where((element) => (element.seccion_id == seccion.id))
-        .toList();
-        
-    List<Asistencia> asistencias = Asistencia.lista
-        .where((element) =>
-            (sesiones.contains(element.sesion)) &&
-            (element.alumno.id == usuario.id))
-        .toList();
+  RxList<SesionAlum> sesiones = <SesionAlum>[].obs;
+  var isLoading = true.obs;
 
-    print(sesiones);
-    return asistencias;
+  FechasAlumnoControllerN({required this.usuarioId, required this.seccionId}) {
+    obtenerSesiones();
+  }
+
+  void obtenerSesiones() async {
+    try {
+      isLoading(true);
+      List<SesionAlum>? sesionesObtenidas = await asistenciasService.obtenerSesionesPorAlumno(usuarioId, seccionId);
+      if (sesionesObtenidas == null) {
+        print('Hubo un error en traer los datos del servidor');
+      } else if (sesionesObtenidas.isEmpty) {
+        print('No hay datos en la respuesta');
+      } else {
+        this.sesiones.value = sesionesObtenidas;
+      }
+    } catch (e) {
+      print("Error al obtener sesiones: $e");
+    } finally {
+      isLoading(false);
+    }
   }
 }
