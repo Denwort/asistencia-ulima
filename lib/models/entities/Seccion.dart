@@ -52,7 +52,7 @@ class Seccion {
   String toString() {
     return 'Seccion -> id: ${id}, codigo: ${this.codigo}, periodo: ${this.periodo}, curso: ${this.curso}, prfeosro: ${this.profesor}';
   }
-
+  /*
   static List<Seccion> lista = [
     // Secciones de movil, erp y riesgos. 2 de Pepe y 1 de nina.
     Seccion(
@@ -104,4 +104,5 @@ class Seccion {
       profesor: Usuario.lista[1],
     )
   ];
+  */
 }

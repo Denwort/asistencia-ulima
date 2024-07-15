@@ -6,7 +6,9 @@ import 'package:ulimagym/models/entities/Sesion.dart';
 import 'package:ulimagym/pages/listadoAlumnos/listadoAlumnos_page.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 
+
 class profesorFechas_controller extends GetxController {
+  /*
   List<Sesion> getAsistencias(Seccion seccion, Usuario usuario) {
     List<Sesion> sesiones = Sesion.lista
         .where((element) => (element.seccion_id == seccion.id))
@@ -27,4 +29,6 @@ class profesorFechas_controller extends GetxController {
       MaterialPageRoute(builder: (context) => ProfesorListadoAlumnos(seccion: seccion, usuario: usuario,)),
     );
   }
+  */
 }
+

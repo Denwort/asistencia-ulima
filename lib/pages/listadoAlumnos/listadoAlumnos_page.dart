@@ -35,6 +35,7 @@ class ProfesorListadoAlumnos extends StatelessWidget {
                 ),
               ],
             ),
+            /*
             Expanded(
               child: ListView(
                 padding: EdgeInsets.all(8.0),
@@ -49,6 +50,7 @@ class ProfesorListadoAlumnos extends StatelessWidget {
                             '${asistencia.alumno.nombres} ${asistencia.alumno.apellidos}',
                             style: TextStyle(fontSize: 16),
                           ),
+                          
                           Obx(() => Checkbox(
                             value: asistencia.asistio.value,
                             onChanged: (bool? nueva_asistencia) {
@@ -66,6 +68,7 @@ class ProfesorListadoAlumnos extends StatelessWidget {
                 }).toList(),
               ),
             ),
+            */
           ],
         ),
       ),

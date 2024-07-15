@@ -13,8 +13,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Cargar los datos del usuario al inicializar la página
+    /*
     control.cargarUsuario(usuario.id);
-
+    */
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(

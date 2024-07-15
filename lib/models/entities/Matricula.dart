@@ -42,6 +42,7 @@ class Matricula {
     String toString() {
       return 'Matricula -> id: ${id}, alumno: ${this.alumno}, seccion: ${this.seccion}';
     }
+    /*
     static List<Matricula> lista = [
       // Mateo esta en los 3 cursos: 2 de pepe y 1 de nina. Cliff en 2 de pepe
       Matricula(
@@ -70,4 +71,5 @@ class Matricula {
         seccion: Seccion.lista[1],
       )
     ];
+    */
 }

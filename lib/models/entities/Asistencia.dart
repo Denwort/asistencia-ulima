@@ -49,6 +49,7 @@ class Asistencia {
       return 'Asistencia -> id: ${id}, asistio: ${this.asistio}, alumno: ${this.alumno}, sesion: ${this.sesion}';
     }
 
+    /*
     static List<Asistencia> lista = [
       // Mateo fue a las sesiones 1, 3 y 4 de movil. solo la 2 de tpi. a la 1 y 3 de sw2.
       // Cliff fue a sesiones 1,2,4 de movil. solo a la 1 de tpi.
@@ -151,4 +152,5 @@ class Asistencia {
       ),
       
     ];
+    */
 }

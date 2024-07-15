@@ -44,7 +44,7 @@ class FechasAlumnoPage extends StatelessWidget {
                   style: TextStyle(fontSize: 16),
                 ),
               ],
-            ),
+            ),/*
             Expanded(
               child: ListView(
                 padding: EdgeInsets.all(8.0),
@@ -59,6 +59,7 @@ class FechasAlumnoPage extends StatelessWidget {
                             '${asistencia.sesion.fechaFin.day}/${asistencia.sesion.fechaFin.month}/${asistencia.sesion.fechaFin.year}',
                             style: TextStyle(fontSize: 16),
                           ),
+                          
                           Obx(() => Checkbox(
                             value: asistencia.asistio.value,
                             onChanged: (bool? nueva_asistencia) {
@@ -68,6 +69,7 @@ class FechasAlumnoPage extends StatelessWidget {
                               // Acción cuando se cambia el valor del checkbox
                             },
                           ),),
+                          
             
                         ],
                       ),
@@ -76,6 +78,7 @@ class FechasAlumnoPage extends StatelessWidget {
                 }).toList(),
               ),
             ),
+            */
           ],
         ),
       ),

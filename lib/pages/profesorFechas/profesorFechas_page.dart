@@ -10,8 +10,9 @@ class profesorFechas_page extends StatelessWidget {
   final Usuario usuario;
   profesorFechas_page({required this.seccion, required this.usuario});
 
+  /*
   profesorFechas_controller control = Get.put(profesorFechas_controller());
-
+  */
   DateTime startDate = DateTime(2024, 4, 1);
   int weeksCount = 16;
 
@@ -45,6 +46,7 @@ class profesorFechas_page extends StatelessWidget {
                 ),
               ],
             ),
+            /*
             Expanded(
               child: ListView(
                 padding: EdgeInsets.all(8.0),
@@ -76,6 +78,7 @@ class profesorFechas_page extends StatelessWidget {
                 }).toList(),
               ),
             ),
+            */
           ],
         ),
       ),

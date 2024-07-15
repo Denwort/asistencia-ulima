@@ -57,45 +57,5 @@ class Usuario {
     return 'Usuario -> id: ${id}, usuario: ${this.usuario}, contrasenia: ${this.contrasenia}, rol: ${this.rol}, nombres: ${this.nombres}, apellidos: ${this.apellidos}, correo: ${this.correo}';
   }
 
-  static List<Usuario> lista = [
-    // Lista de usuarios. 1 pepe, 1 nina, 1 mateo y 1 cliff.
-    Usuario(
-      id: 1,
-      usuario: 'profesor',
-      contrasenia: '',
-      rol: 'profesor',
-      nombres: 'Pepe',
-      apellidos: 'Valdivia',
-      correo: "pepe@gmail.com",
-    ),
-    // ESTE USUARIO SI HACE MATCH CON EL DE LA BASE DE DATOS
-    Usuario(
-      id: 2,
-      usuario: 'profesor2',
-      contrasenia: '',
-      rol: 'profesor',
-      nombres: 'Hernan',
-      apellidos: 'Nina',
-      correo: "nina@gmail.com",
-    ),
-    // ESTE USUARIO SI HACE MATCH CON EL DE LA BASE DE DATOS
-    Usuario(
-      id: 3,
-      usuario: 'usuario',
-      contrasenia: '',
-      rol: 'alumno',
-      nombres: 'mateo',
-      apellidos: 'alvarez',
-      correo: "20212407@aloe.ulima.edu.pe",
-    ),
-    Usuario(
-      id: 4,
-      usuario: 'usuario3',
-      contrasenia: '',
-      rol: 'alumno',
-      nombres: 'cliff',
-      apellidos: 'de la cruz',
-      correo: "cliff@gmail.com",
-    ),
-  ];
+  
 }
