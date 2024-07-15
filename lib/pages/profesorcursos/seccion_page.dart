@@ -2,16 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/CursoProfe.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
-import 'seccion_controller.dart';
+import 'package:ulimagym/pages/profesorcursos/seccion_controller.dart';
 
-class ProfesorCursosPage extends StatelessWidget {
+class ProfesorCursosPage extends StatefulWidget {
   final Usuario usuario;
   ProfesorCursosPage({required this.usuario});
 
   @override
-  Widget build(BuildContext context) {
-    final ProfesorCursosController control = Get.put(ProfesorCursosController(usuario));
+  _ProfesorCursosPageState createState() => _ProfesorCursosPageState();
+}
 
+class _ProfesorCursosPageState extends State<ProfesorCursosPage> {
+  late ProfesorCursosController control;
+
+  @override
+  void initState() {
+    super.initState();
+    control = Get.put(ProfesorCursosController(widget.usuario));
+  }
+
+  @override
+  void dispose() {
+    Get.delete<ProfesorCursosController>();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: null,
@@ -41,8 +58,6 @@ class ProfesorCursosPage extends StatelessWidget {
   }
 
   Widget _buildCursosList(BuildContext context) {
-    final ProfesorCursosController control = Get.find<ProfesorCursosController>();
-
     return Obx(() {
       if (control.isLoading.value) {
         return Center(child: CircularProgressIndicator());
@@ -61,7 +76,7 @@ class ProfesorCursosPage extends StatelessWidget {
       cursosWidgets.add(
         InkWell(
           onTap: () {
-            // control.redireccionrAFechas(context, curso.seccion, usuario);
+            // control.redireccionrAFechas(context, curso.seccion, widget.usuario);
           },
           child: Container(
             width: 330,

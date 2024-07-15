@@ -5,14 +5,31 @@ import 'package:ulimagym/models/entities/CursoAlum.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'seccion_controller.dart';
 
-class EstudianteCursosPage extends StatelessWidget {
+class EstudianteCursosPage extends StatefulWidget {
   final Usuario usuario;
-
   EstudianteCursosPage({required this.usuario});
 
   @override
+  _EstudianteCursosPageState createState() => _EstudianteCursosPageState();
+}
+
+class _EstudianteCursosPageState extends State<EstudianteCursosPage> {
+  late EstudianteCursosController control;
+
+  @override
+  void initState() {
+    super.initState();
+    control = Get.put(EstudianteCursosController(widget.usuario));
+  }
+
+  @override
+  void dispose() {
+    Get.delete<EstudianteCursosController>();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final EstudianteCursosController control = Get.put(EstudianteCursosController(usuario));
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: null,
@@ -42,8 +59,6 @@ class EstudianteCursosPage extends StatelessWidget {
   }
 
   Widget _buildCursosList(BuildContext context) {
-    final EstudianteCursosController control = Get.find<EstudianteCursosController>();
-
     return Obx(() {
       if (control.isLoading.value) {
         return Center(child: CircularProgressIndicator());
@@ -63,7 +78,7 @@ class EstudianteCursosPage extends StatelessWidget {
       cursosWidgets.add(
         InkWell(
           onTap: () {
-            Get.find<EstudianteCursosController>().redireccionarAFechas(context, curso.seccId, usuario.id);
+            //Get.find<EstudianteCursosController>().redireccionarAFechas(context, curso.seccId, usuario.id);
           },
           child: Container(
             width: 330,
