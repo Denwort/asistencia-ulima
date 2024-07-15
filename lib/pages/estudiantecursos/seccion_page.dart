@@ -1,7 +1,7 @@
 // lib/pages/estudiantecursos/seccion_page.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulimagym/models/entities/Curso2.dart';
+import 'package:ulimagym/models/entities/CursoAlum.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'seccion_controller.dart';
 
@@ -56,7 +56,7 @@ class EstudianteCursosPage extends StatelessWidget {
     });
   }
 
-  List<Widget> _generarCursos(BuildContext context, List<Curso2> cursos) {
+  List<Widget> _generarCursos(BuildContext context, List<CursoAlum> cursos) {
     List<Widget> cursosWidgets = [];
 
     for (var curso in cursos) {

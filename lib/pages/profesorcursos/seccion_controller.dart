@@ -27,8 +27,6 @@ class ProfesorCursosController extends GetxController {
     );
   }
 
-  
-
   void obtenerCursos() async {
     try {
       isLoading(true);

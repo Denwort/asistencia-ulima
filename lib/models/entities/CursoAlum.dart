@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class Curso2 {
+class CursoAlum {
   final int alumnoId;
   final String cursoNombre;
   final String seccionCodigo;
@@ -10,7 +10,7 @@ class Curso2 {
   final String color;
   final int seccId;
 
-  Curso2({
+  CursoAlum({
     required this.alumnoId,
     required this.cursoNombre,
     required this.seccionCodigo,
@@ -21,8 +21,8 @@ class Curso2 {
     required this.seccId,
   });
 
-  factory Curso2.fromJson(Map<String, dynamic> json) {
-    return Curso2(
+  factory CursoAlum.fromJson(Map<String, dynamic> json) {
+    return CursoAlum(
       alumnoId: json['alumno_id'],
       cursoNombre: json['curso_nombre'],
       seccionCodigo: json['seccion_codigo'],

@@ -18,13 +18,7 @@ class ProfileController extends GetxController {
     print("Cambiando contraseña");
   }
 
-  Future<void> cerrarSesion() async {
-    // Limpia los datos del usuario
-    usuario.value = Usuario.empty();
-
-    // Limpia el almacenamiento local
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
-    print("Cerrando sesión y limpiando almacenamiento local");
+  void cerrarSesion()  {
+    Get.reset();
   }
 }
