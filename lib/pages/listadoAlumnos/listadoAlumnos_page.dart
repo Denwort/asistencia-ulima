@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulimagym/models/entities/Asistencia.dart';
-import 'package:ulimagym/models/entities/Seccion.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import './listadoAlumnos_controller.dart';
 
 class ProfesorListadoAlumnos extends StatelessWidget {
-  final Seccion seccion;
+  final int sesionId;
   final Usuario usuario;
-  ProfesorListadoAlumnos({required this.seccion, required this.usuario});
+  final ProfesorListadoAlumnosController control;
 
-  ProfesorListadoAlumnosController control = Get.put(ProfesorListadoAlumnosController());
-
+  ProfesorListadoAlumnos({required this.sesionId, required this.usuario})
+      : control = Get.put(ProfesorListadoAlumnosController(sesionId: sesionId));
 
   Widget _buildBody(BuildContext context) {
     return SafeArea(
@@ -30,45 +28,51 @@ class ProfesorListadoAlumnos extends StatelessWidget {
                 ),
                 Spacer(),
                 Text(
-                  seccion.curso.nombre,
+                  "Asistencias", // Puedes actualizar esto para mostrar el nombre del curso
                   style: TextStyle(fontSize: 16),
                 ),
               ],
             ),
-            /*
             Expanded(
-              child: ListView(
-                padding: EdgeInsets.all(8.0),
-                children: control.getAsistencias(seccion, usuario).map((asistencia) {
-                  return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${asistencia.alumno.nombres} ${asistencia.alumno.apellidos}',
-                            style: TextStyle(fontSize: 16),
+              child: Obx(() {
+                if (control.isLoading.value) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (control.asistencias.isEmpty) {
+                  return Center(child: Text("No hay asistencias disponibles"));
+                } else {
+                  return ListView(
+                    padding: EdgeInsets.all(8.0),
+                    children: control.asistencias.map((asistencia) {
+                      return Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '${asistencia.nombres} ${asistencia.apellidos}',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              Obx(
+                                () => Checkbox(
+                                  value: asistencia.asistio.value,
+                                  onChanged: (bool? nueva_asistencia) {
+                                    if (nueva_asistencia != null) {
+                                      asistencia.asistio.value = nueva_asistencia;
+                                      control.modificarAsistencia(asistencia.id, nueva_asistencia);
+                                    }
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
-                          
-                          Obx(() => Checkbox(
-                            value: asistencia.asistio.value,
-                            onChanged: (bool? nueva_asistencia) {
-                              asistencia.asistio.value = nueva_asistencia!;
-                              Asistencia.lista[asistencia.id].asistio = nueva_asistencia!.obs;
-                              print(nueva_asistencia!.obs);
-                              // Acción cuando se cambia el valor del checkbox
-                            },
-                          ),),
-            
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    }).toList(),
                   );
-                }).toList(),
-              ),
+                }
+              }),
             ),
-            */
           ],
         ),
       ),
@@ -77,12 +81,12 @@ class ProfesorListadoAlumnos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: null,
-        body: _buildBody(context),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text('Listado de Alumnos'),
       ),
+      body: _buildBody(context),
     );
   }
 }

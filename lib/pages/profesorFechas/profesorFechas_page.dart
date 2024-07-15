@@ -56,7 +56,7 @@ class ProfesorFechas_page extends StatelessWidget {
                         final sesion = control.sesiones[index];
                         return GestureDetector(
                           onTap: () {
-                            /*control.redireccionrAListadoAlumnos(context, sesion.id, usuario.id);*/
+                            control.redireccionrAListadoAlumnos(context, sesion.id, usuario);
                           },
                           child: Card(
                             child: Padding(

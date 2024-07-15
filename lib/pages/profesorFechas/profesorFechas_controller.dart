@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/SesionProfe.dart';
+import 'package:ulimagym/models/entities/Usuario.dart';
+import 'package:ulimagym/pages/listadoAlumnos/listadoAlumnos_page.dart';
 import '../../services/profesorFechas_service.dart';
 
 class ProfesorFechas_controller extends GetxController {
@@ -30,11 +32,12 @@ class ProfesorFechas_controller extends GetxController {
     } finally {
       isLoading(false);
     }
-    /*void redireccionrAListadoAlumnos(BuildContext context, int sesion_id, int usuario_id) {
-      Navigator.push(
+  }
+
+  void redireccionrAListadoAlumnos(BuildContext context, int sesion_id, Usuario usuario) {
+    Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProfesorListadoAlumnos(sesion_id: sesion_id, ususuario_id: usuario_id,)),
+      MaterialPageRoute(builder: (context) => ProfesorListadoAlumnos(sesionId: sesion_id, usuario: usuario)),
     );
-    }*/
   }
 }
