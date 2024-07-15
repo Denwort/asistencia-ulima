@@ -78,7 +78,7 @@ class _EstudianteCursosPageState extends State<EstudianteCursosPage> {
       cursosWidgets.add(
         InkWell(
           onTap: () {
-            //Get.find<EstudianteCursosController>().redireccionarAFechas(context, curso.seccId, usuario.id);
+            control.redireccionarAFechas(context, curso.seccId, widget.usuario.id);
           },
           child: Container(
             width: 330,
