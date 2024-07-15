@@ -19,10 +19,10 @@ class ProfesorCursosController extends GetxController {
     obtenerCursos();
   }
   
-  void redireccionrAFechas(BuildContext context, Seccion seccion, Usuario usuario) {
+  void redireccionrAFechas(BuildContext context, int seccionId, Usuario usuario) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => profesorFechas_page(seccion: seccion, usuario: usuario)),
+      MaterialPageRoute(builder: (context) => ProfesorFechas_page(seccionId: seccionId, usuario: usuario)),
     );
   }
 

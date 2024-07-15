@@ -1,34 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulimagym/models/entities/Asistencia.dart';
-import 'package:ulimagym/models/entities/Seccion.dart';
-import 'package:ulimagym/models/entities/Sesion.dart';
-import 'package:ulimagym/pages/listadoAlumnos/listadoAlumnos_page.dart';
-import 'package:ulimagym/models/entities/Usuario.dart';
+import 'package:ulimagym/models/entities/SesionProfe.dart';
+import '../../services/profesorFechas_service.dart';
 
+class ProfesorFechas_controller extends GetxController {
+  final int seccionId;
+  final ProfesorFechasService asistenciasService = ProfesorFechasService(); // Instancia del servicio
 
-class profesorFechas_controller extends GetxController {
-  /*
-  List<Sesion> getAsistencias(Seccion seccion, Usuario usuario) {
-    List<Sesion> sesiones = Sesion.lista
-        .where((element) => (element.seccion_id == seccion.id))
-        .toList();
-    List<Asistencia> asistencias = Asistencia.lista
-        .where((element) =>
-            (sesiones.contains(element.sesion)) &&
-            (element.alumno.id == usuario.id))
-        .toList();
-    print(sesiones);
-    return sesiones;
+  RxList<SesionProfe> sesiones = <SesionProfe>[].obs;
+  var isLoading = true.obs;
+
+  ProfesorFechas_controller({required this.seccionId}) {
+    obtenerSesiones();
   }
 
-  void redireccionrAListadoAlumnos(BuildContext context, Seccion seccion, Usuario usuario) {
-    
-    Navigator.push(
+  void obtenerSesiones() async {
+    try {
+      isLoading(true);
+      List<SesionProfe>? sesionesObtenidas = await asistenciasService.obtenerSesionesProfesor(seccionId);
+      if (sesionesObtenidas == null) {
+        print('Hubo un error en traer los datos del servidor');
+      } else if (sesionesObtenidas.isEmpty) {
+        print('No hay datos en la respuesta');
+      } else {
+        this.sesiones.value = sesionesObtenidas;
+      }
+    } catch (e) {
+      print("Error al obtener sesiones: $e");
+    } finally {
+      isLoading(false);
+    }
+    /*void redireccionrAListadoAlumnos(BuildContext context, int sesion_id, int usuario_id) {
+      Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProfesorListadoAlumnos(seccion: seccion, usuario: usuario,)),
+      MaterialPageRoute(builder: (context) => ProfesorListadoAlumnos(sesion_id: sesion_id, ususuario_id: usuario_id,)),
     );
+    }*/
   }
-  */
 }
-

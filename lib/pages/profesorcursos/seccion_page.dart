@@ -76,7 +76,7 @@ class _ProfesorCursosPageState extends State<ProfesorCursosPage> {
       cursosWidgets.add(
         InkWell(
           onTap: () {
-            // control.redireccionrAFechas(context, curso.seccion, widget.usuario);
+            control.redireccionrAFechas(context, curso.seccId, widget.usuario);
           },
           child: Container(
             width: 330,
