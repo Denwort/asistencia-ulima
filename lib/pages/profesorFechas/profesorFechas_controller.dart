@@ -37,7 +37,7 @@ class ProfesorFechas_controller extends GetxController {
   void redireccionrAListadoAlumnos(BuildContext context, int sesion_id, Usuario usuario) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProfesorListadoAlumnos(sesionId: sesion_id, usuario: usuario)),
+      MaterialPageRoute(builder: (context) => ProfesorListadoAlumnos_page(sesionId: sesion_id, usuario: usuario)),
     );
   }
 }

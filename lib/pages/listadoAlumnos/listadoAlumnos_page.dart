@@ -3,15 +3,15 @@ import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import './listadoAlumnos_controller.dart';
 
-class ProfesorListadoAlumnos extends StatelessWidget {
+class ProfesorListadoAlumnos_page extends StatelessWidget {
   final int sesionId;
   final Usuario usuario;
-  final ProfesorListadoAlumnosController control;
+  late ProfesorListadoAlumnosController control;
 
-  ProfesorListadoAlumnos({required this.sesionId, required this.usuario})
-      : control = Get.put(ProfesorListadoAlumnosController(sesionId: sesionId));
+  ProfesorListadoAlumnos_page({required this.sesionId, required this.usuario});
 
   Widget _buildBody(BuildContext context) {
+    control = Get.put(ProfesorListadoAlumnosController(sesionId: sesionId));
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.all(16.0), // Más relleno alrededor de todo el widget
@@ -83,9 +83,6 @@ class ProfesorListadoAlumnos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text('Listado de Alumnos'),
-      ),
       body: _buildBody(context),
     );
   }
