@@ -52,6 +52,7 @@ class Sesion {
       return 'Sesion -> id: ${id}, registro: ${this.registro}, fecha_inicio: ${this.fechaInicio}, fecha_fin: ${this.fechaFin}, seccion_id: ${this.seccion_id}';
     }
 
+    /*
     static List<Sesion> lista = [
       // hay 4 sesiones para movil, 2 para tpi, 3 para sw2
       // Movil
@@ -121,5 +122,6 @@ class Sesion {
         seccion_id: 3,
       )
     ];
+    */
     
 }
