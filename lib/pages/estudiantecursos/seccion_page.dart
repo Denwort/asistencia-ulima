@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Curso2.dart';
-import 'package:ulimagym/models/entities/Seccion.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'seccion_controller.dart';
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/CursoProfe.dart';
-import 'package:ulimagym/models/entities/Seccion.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
 import 'seccion_controller.dart';
 
@@ -58,14 +57,11 @@ class ProfesorCursosPage extends StatelessWidget {
 
   List<Widget> _generarCursos(BuildContext context, List<CursoProfe> cursos) {
     List<Widget> cursosWidgets = [];
-
     for (var curso in cursos) {
       cursosWidgets.add(
         InkWell(
           onTap: () {
-            /*
-            control.redireccionrAFechas(context, curso.seccion, usuario);
-            */
+            // control.redireccionrAFechas(context, curso.seccion, usuario);
           },
           child: Container(
             width: 330,
@@ -93,7 +89,7 @@ class ProfesorCursosPage extends StatelessWidget {
                     'Sección: ${curso.seccionCodigo}',
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 14,
+                      fontSize: 16,
                     ),
                   ),
                 ],

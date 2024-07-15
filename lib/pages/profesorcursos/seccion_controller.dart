@@ -19,6 +19,7 @@ class ProfesorCursosController extends GetxController {
     obtenerCursos();
   }
   
+  
   void redireccionrAFechas(BuildContext context, Seccion seccion, Usuario usuario) {
     Navigator.push(
       context,
@@ -26,21 +27,17 @@ class ProfesorCursosController extends GetxController {
     );
   }
 
-  List<Seccion> getSecciones(Usuario yo){
-    List<Seccion> secciones = Seccion.lista.where((element) => (element.profesor.id==yo.id)).toList();
-    return secciones;
-  }
+  
 
   void obtenerCursos() async {
     try {
       isLoading(true);
       List<CursoProfe>? cursosObtenidos = await cursoService.obtenerCursosPorProfe(usuario.id);
-      if(cursosObtenidos == null){
-        print('Hubo un error en traer los datos del servidor');
-      } else if(cursosObtenidos.isEmpty){
+
+      if(cursosObtenidos == null || cursosObtenidos.isEmpty) {
         print('No hay datos en la respuesta');
-      } else{
-        this.cursos.value = cursosObtenidos;
+      } else {
+        cursos.value = cursosObtenidos;
       }
       
     } catch (e) {

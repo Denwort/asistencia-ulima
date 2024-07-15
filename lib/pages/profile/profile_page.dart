@@ -68,8 +68,8 @@ class ProfilePage extends StatelessWidget {
                   child: FractionallySizedBox(
                     widthFactor: 0.6, // 60% del ancho del contenedor padre
                     child: TextButton(
-                      onPressed: () {
-                        control.cerrarSesion();
+                      onPressed: () async {
+                        await control.cerrarSesion();
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),

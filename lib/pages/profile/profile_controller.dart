@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileController extends GetxController {
   var usuario = Usuario.empty().obs;
@@ -17,8 +18,13 @@ class ProfileController extends GetxController {
     print("Cambiando contraseña");
   }
 
-  void cerrarSesion() {
-    // Implementa la lógica para cerrar sesión
-    print("Cerrando sesión");
+  Future<void> cerrarSesion() async {
+    // Limpia los datos del usuario
+    usuario.value = Usuario.empty();
+
+    // Limpia el almacenamiento local
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    print("Cerrando sesión y limpiando almacenamiento local");
   }
 }
