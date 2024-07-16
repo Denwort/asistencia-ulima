@@ -4,23 +4,44 @@ import 'package:ulimagym/models/entities/Usuario.dart';
 import 'profile_controller.dart';
 import 'package:ulimagym/pages/login/login_page.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   final Usuario usuario;
   ProfilePage({required this.usuario});
 
-  final ProfileController control = Get.put(ProfileController());
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late ProfileController control;
+
+  @override
+  void initState() {
+    super.initState();
+    control = Get.put(ProfileController(widget.usuario));
+  }
+
+  @override
+  void dispose() {
+    Get.delete<ProfileController>();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Cargar los datos del usuario al inicializar la página
-    /*
-    control.cargarUsuario(usuario.id);
-    */
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Obx(() {
-          Usuario usuario = control.usuario.value;
+          if (control.isLoading.value) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          if (control.perfil.value.id == 0) {
+            return Center(child: Text('No hay datos disponibles'));
+          }
+
+          Usuario usuario = control.perfil.value;
 
           return Padding(
             padding: const EdgeInsets.all(16.0),
@@ -63,6 +84,13 @@ class ProfilePage extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ),
+                SizedBox(height: 20),
+                Center(
+                  child: Text(
+                    usuario.correo,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
+                  ),
+                ),
                 SizedBox(height: 60),
                 Align(
                   alignment: Alignment.center,
@@ -87,7 +115,7 @@ class ProfilePage extends StatelessWidget {
                         'Cerrar sesión',
                         style: TextStyle(
                           color: Colors.white, // Color del texto
-                          fontSize: 16,
+                          fontSize: 18,
                         ),
                       ),
                     ),

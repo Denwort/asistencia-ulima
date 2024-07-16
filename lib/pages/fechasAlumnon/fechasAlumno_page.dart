@@ -2,17 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'fechasAlumno_controller.dart';
 
-class FechasAlumnoPageN extends StatelessWidget {
+class FechasAlumnoPageN extends StatefulWidget {
   final int seccionId;
   final int usuarioId;
 
   FechasAlumnoPageN({required this.seccionId, required this.usuarioId});
 
+  @override
+  _FechasAlumnoPageNState createState() => _FechasAlumnoPageNState();
+}
+
+class _FechasAlumnoPageNState extends State<FechasAlumnoPageN> {
   late FechasAlumnoControllerN control;
 
   @override
+  void initState() {
+    super.initState();
+    control = Get.put(FechasAlumnoControllerN(usuarioId: widget.usuarioId, seccionId: widget.seccionId));
+  }
+
+  @override
+  void dispose() {
+    Get.delete<FechasAlumnoControllerN>();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    control = Get.put(FechasAlumnoControllerN(usuarioId: usuarioId, seccionId: seccionId));
 
     return MaterialApp(
       home: Scaffold(

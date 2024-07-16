@@ -1,20 +1,29 @@
 import 'package:get/get.dart';
 import 'package:ulimagym/models/entities/Usuario.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ulimagym/pages/profesorcursos/seccion_controller.dart';
+import '../../services/profile_service.dart';
 
 class ProfileController extends GetxController {
-  var usuario = Usuario.empty().obs;
+  final Usuario usuario;
+  final ProfileService profileService = ProfileService(); // Instancia del servicio
 
-  // Simula la carga de datos del usuario (puedes adaptar esto para usar una API real)
-  /*
-  void cargarUsuario(int id) {
-    Usuario? user = Usuario.lista.firstWhere((u) => u.id == id, orElse: () => Usuario.empty());
-    if (user != null) {
-      usuario.value = user;
+  Rx<Usuario> perfil = Usuario.empty().obs;
+  var isLoading = true.obs;
+
+  ProfileController(this.usuario) {
+    obtenerPerfil();
+  }
+
+  void obtenerPerfil() async {
+    try {
+      isLoading(true);
+      Usuario perfilObtenido = await profileService.obtenerPerfil(usuario.id);
+      perfil.value = perfilObtenido;
+    } catch (e) {
+      print("Error al obtener perfil: $e");
+    } finally {
+      isLoading(false);
     }
   }
-  */
 
   void cambiarContrasenia() {
     // Implementa la lógica para cambiar la contraseña
