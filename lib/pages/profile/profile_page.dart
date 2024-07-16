@@ -84,6 +84,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ),
+                SizedBox(height: 20),
+                Center(
+                  child: Text(
+                    usuario.correo,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
+                  ),
+                ),
                 SizedBox(height: 60),
                 Align(
                   alignment: Alignment.center,
@@ -108,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         'Cerrar sesión',
                         style: TextStyle(
                           color: Colors.white, // Color del texto
-                          fontSize: 16,
+                          fontSize: 18,
                         ),
                       ),
                     ),
