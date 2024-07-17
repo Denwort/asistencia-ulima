@@ -4,16 +4,34 @@ import 'package:ulimagym/models/entities/Usuario.dart';
 import 'package:ulimagym/models/entities/Seccion.dart';
 import 'profesorFechas_controller.dart';
 
-class ProfesorFechas_page extends StatelessWidget {
+class ProfesorFechas_page extends StatefulWidget {
   final Usuario usuario;
   final int seccionId;
+
   ProfesorFechas_page({required this.seccionId, required this.usuario});
 
+  @override
+  _ProfesorFechas_page createState() => _ProfesorFechas_page();
+}
+
+class _ProfesorFechas_page extends State<ProfesorFechas_page> {
+
   late ProfesorFechas_controller control;
+  
+  @override
+  void initState() {
+    super.initState();
+    control = Get.put(ProfesorFechas_controller(seccionId: widget.seccionId));
+  }
 
   @override
+  void dispose() {
+    Get.delete<ProfesorFechas_controller>();
+    super.dispose();
+  }
+  
+  @override
   Widget build(BuildContext context) {
-    control = Get.put(ProfesorFechas_controller(seccionId: seccionId));
     return MaterialApp(
       home: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -56,7 +74,7 @@ class ProfesorFechas_page extends StatelessWidget {
                         final sesion = control.sesiones[index];
                         return GestureDetector(
                           onTap: () {
-                            control.redireccionrAListadoAlumnos(context, sesion.id, usuario);
+                            control.redireccionrAListadoAlumnos(context, sesion.id, widget.usuario);
                           },
                           child: Card(
                             child: Padding(
