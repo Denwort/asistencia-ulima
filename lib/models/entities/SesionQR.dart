@@ -14,14 +14,20 @@ class SesionQR {
     bool registro;
     DateTime fechaInicio;
     DateTime fechaFin;
-    int seccion_id;
+    int seccionId;
+    String seccionCodigo;
+    String periodo;
+    String curso;
 
     SesionQR({
         required this.id,
         required this.registro,
         required this.fechaInicio,
         required this.fechaFin,
-        required this.seccion_id,
+        required this.seccionId,
+        required this.seccionCodigo,
+        required this.periodo,
+        required this.curso,
     });
 
     factory SesionQR.fromJson(Map<String, dynamic> json) => SesionQR(
@@ -29,7 +35,10 @@ class SesionQR {
         registro: json["registro"],
         fechaInicio: DateTime.parse(json["fechaInicio"]),
         fechaFin: DateTime.parse(json["fechaFin"]),
-        seccion_id: json["seccion_id"],
+        seccionId: json["seccionId"],
+        seccionCodigo: json["seccionCodigo"],
+        periodo: json["periodo"],
+        curso: json["curso"]
     );
     
 }
